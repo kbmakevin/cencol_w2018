@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+
+<body>
+    <!-- Load Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel" data-presets="es2016,es2017,stage-2, stage-3">
+
+        function iterateVar() {
+        for (var i = 0; i < 10; i++) {
+        document.getElementById('output').innerHTML += i + "<br>";
+        }
+        document.getElementById('output').innerHTML += i + "<br>"; //will print i
+        }
+        function iterateLet() {
+        for (let i = 0; i < 10; i++) {
+        document.getElementById('output').innerHTML += i + "<br>";
+        }
+        document.getElementById('output').innerHTML += i + "<br>"; //will throw an error
+        } 
+        //
+        iterateVar();
+        document.getElementById('output').innerHTML += "check console for error" + "<br>";
+
+        //
+        iterateLet();
+
+    </script>
+
+    <div id="output"></div>
+
+</body>
+
+</html>

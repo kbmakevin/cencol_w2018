@@ -1,0 +1,12 @@
+{
+  "name": "nodej-web-app-test",
+  "version": "0.0.0",
+  "description": "NodejWebAppTest",
+  "main": "server.js",
+  "author": {
+    "name": "inika"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}

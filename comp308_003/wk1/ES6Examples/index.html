@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ES6 Examples</title>
+</head>
+
+<body>
+    <div id="output"></div>
+
+    <h3 align="center"> ES6 Features</h3>
+        <ul>
+            <li><a href="export_import_example.html">Export/import example</a></li>
+            <li><a href="let_var_const_example.html">Let/var/const example</a></li>
+            <li><a href="class_example.html">Class Example</a></li>
+            <li><a href="arrow_function_example.html">Arrow Function Example</a></li>
+            <li><a href="default_rest_spread_example.html">Default, Rest, and Spread example</a></li>
+
+
+        </ul>
+
+        <script type="module" src="./main.js">
+            document.getElementById('output').innerHTML = halfOf(4);
+
+            import {addTextToBody} from './utils.js';
+
+            addTextToBody('Modules are pretty cool.');
+        </script>
+
+
+</body>
+</html>

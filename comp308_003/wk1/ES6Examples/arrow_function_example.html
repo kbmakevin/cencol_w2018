@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h2>Arrow function example</h2>
+    <!-- Load Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel" data-presets="es2016,es2017,stage-2, stage-3">
+
+        var numbers = [1, 2, 3, 4, 5];
+        const squares = numbers.map(n => n * n); 
+        for (var i = 0; i < 5; i++) {
+        document.getElementById('output').innerHTML += squares[i] + "<br>";
+        }
+
+    </script>
+    <div id="output"></div>
+
+
+</body>
+</html>

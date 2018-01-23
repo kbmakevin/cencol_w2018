@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!-- Load Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    
+    <!-- Your custom script here -->
+    <script type="text/babel" data-presets="es2016,es2017,stage-2, stage-3">
+
+        function add(x, y = 0) {
+            return x + y;
+        }
+        //add(1)
+        //add(1,2)
+        
+        document.getElementById('output').innerHTML = "add(1,2)=" + add(1,2) + "<br>";
+        //The Rest feature allows you to pass an array as trailing arguments as follows:
+        function userFriends(user, ...friends) {
+            document.getElementById('output').innerHTML += user + ' has ' + friends.length + ' friends:'+ 
+        "<br>";
+        }
+        userFriends('User', 'Bob', 'Alice');
+        //
+        //The Spread feature turns an array into a call argument:
+        function userTopFriends(firstFriend, secondFriend, thirdFriends) {
+            document.getElementById('output').innerHTML += firstFriend + "<br>";
+            document.getElementById('output').innerHTML += secondFriend+ "<br>";
+            document.getElementById('output').innerHTML += thirdFriends+ "<br>";
+
+        }
+        userTopFriends(...['Alice', 'Bob', 'Michelle']);
+
+
+
+        
+    </script>
+    <div id="output"></div>
+</body>
+</html>
