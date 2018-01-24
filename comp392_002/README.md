@@ -1,4 +1,4 @@
-# W2018_COMP392_Advanced_Graphics
+# COMP392: Advanced Graphics
 
 ## Course Description
 
