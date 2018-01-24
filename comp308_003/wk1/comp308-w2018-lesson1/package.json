@@ -1,0 +1,11 @@
+{
+  "name": "comp308-w2018-lesson1",
+  "version": "0.0.1",
+  "description": "Node and Express Demo For COMP308",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kevin Ma <kbma.kevin@gmail.com>",
+  "license": "ISC"
+}
