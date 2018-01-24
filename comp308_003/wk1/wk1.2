@@ -1,0 +1,46 @@
+installed nodejs v9.4.0
+
+powershell
+(gci env:path | select value) -split ';' | sls java
+
+use yarn instead of bower (outdated now)
+
+install git via desktop.github.com or git-scm.com
+
+nodejs is very slim as a server, use npm to add functionality (dependencies to get our webapp to work)
+
+node is everything going on in the backend
+
+DON'T do:
+$ npm install express --save
+
+this is normally how we install packages though
+
+express is an addon for nodejs
+
+installed .ejs extension in vscode
+and Angular 2 TypeScript Emmet
+
+package.json keeps track of all dependencies for the package
+    properties/manifest for all dependencies
+
+npm init to create the package.json file
+
+express is middleware...?
+
+never push node_modules to github
+
+nodemon is a helper, developer dependency, our app doesnt need it to run
+$ npm install nodemon --save-dev
+it helps us so that we dont need to stop and start server everytime make a change
+
+get nodemon and mongod working...
+
+nodejs essential training on lynda.com
+
+sign up for mlab
+    create mongodb on the web, not just local db
+
+heroku > azure 
+    works with mlab, free
+
