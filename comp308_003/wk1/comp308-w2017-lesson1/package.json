@@ -10,5 +10,13 @@
     "NodeJS"
   ],
   "author": "Kevin Ma",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbmakevin/cencol_w2018.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kbmakevin/cencol_w2018/issues"
+  },
+  "homepage": "https://github.com/kbmakevin/cencol_w2018#readme"
 }
