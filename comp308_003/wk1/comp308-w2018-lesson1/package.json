@@ -2,10 +2,16 @@
   "name": "comp308-w2018-lesson1",
   "version": "0.0.1",
   "description": "Node and Express Demo For COMP308",
+  "repository": {
+    "url": "https://github.com/kbmakevin/cencol_w2018.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kevin Ma <kbma.kevin@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
