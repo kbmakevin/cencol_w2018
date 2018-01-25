@@ -1,0 +1,49 @@
+Introducing WebGL
+---
+in the last couple of years, browsers have become more powerful and are capable platforms to deliver complex applications and graphics
+
+most of these, though, are standard 2d graphics
+
+most modern browsers have adopted WebGL, which allows you to not just create 2D applications and graphics in the browser, but also create beautiful and good performing 3d applications using the capabilities ofthe GPU
+
+the WebGL API is a cross-platform, royalty-free web std for a low lvl 3d graphics API based on OpenGL ES 2.0 (GL stands for graphics library), exposed through the HTML5 Canvas element as Document Object Model interfaces
+
+all 3d objects have
+    faces, edges and vertices
+
+materials wrap around the mesh of an object
+
+Developers familiar with Open GL ES 2.0 will recognizze WebGL as a Shader-based API using GLSL, with constructs that are semantically similar to those of the underlying OpenGL ES 2.0 API. 
+
+It stays very close to the Open GL 2.0 specification, with some concessions made for what devs expect out of memory-manged languages such as JavaScript
+
+WebGL brings plugin-free 3D to the web, implemented right into the browser
+
+Major browser vendors Apple (Safari), Google (Chrome), Mozilla (Firefox), and Opera (Opera) are members of the WebGL Working Group
+
+ThreeJS
+---
+Modern browsers are slowly getting more powerful featueres that can be assesed directly from JavaScript
+
+Programming WebGL directly from JavaScript to create and animate 3d scenes in a very complex and error-prone process
+
+Three.js is a library that makes this a lot easier
+
+texture vs materials
+    material - goes around the mesh
+    texture - img render around the material itself
+
+material is the container for a texture
+
+CANT have texture w/o material, CAN have material w/o texture 
+
+w a couple of lines of js, u can create anything, from simple 3d models to photorealistic real-time scenes, as shown in the following screenshot: http://www.vill.ee/eye
+
+Requirements to use Three.JS
+---
+NOTE: typescript and vscode developed by microsoft
+
+github, nodejs, bower, vscode, typescript, tsd (typescript definition files)
+
+local nodejs web server (http-server)
+
