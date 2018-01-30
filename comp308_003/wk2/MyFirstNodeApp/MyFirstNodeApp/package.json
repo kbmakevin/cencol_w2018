@@ -1,0 +1,9 @@
+{
+  "name": "my-first-node-app",
+  "version": "0.0.0",
+  "description": "MyFirstNodeApp",
+  "main": "app.js",
+  "author": {
+    "name": "inika"
+  }
+}

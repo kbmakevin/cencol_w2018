@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p>Some paragraph text</p>
+    <h1>some heading 1 text</h1>
+    <h2>some heading 2 text</h2>
+
+    <a href="#" id="size-12">12</a>
+    <a href="#" id="size-14">14</a>
+    <a href="#" id="size-16">16</a>
+
+    <script>
+
+        function makeSizer(size) {
+            return function () { //closure function
+                document.body.style.fontSize = size + 'px';
+            };
+        }
+
+        var size12 = makeSizer(12); //closure that changes font size to 12
+        var size14 = makeSizer(14); //closure that changes font size to 14
+        var size16 = makeSizer(16); //closure that changes font size to 16
+        //
+        document.getElementById('size-12').onclick = size12; //set font size to 12
+        document.getElementById('size-14').onclick = size14; //set font size to 14
+        document.getElementById('size-16').onclick = size16; //set font size to 16
+
+
+    </script>
+
+
+</body>
+</html>

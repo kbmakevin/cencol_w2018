@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Closure Example</title>
+    <link rel="stylesheet" type="text/css" href="style1.css">
+</head>
+<body>
+    <div id="demo1"></div>
+    <div id="demo2"></div>
+
+    
+    
+    <script>
+        // this example shows that:
+        //  nested functions have access to variables declared in their outer scope.
+        //
+        function parent() {
+            const message = "Hello World - courtesy of lexical scoping";
+            function child() {
+                alert(message); //has access to parent scope
+            }
+            child(); 
+        }
+        parent(); //displays Hello World
+        //
+        //
+        //
+        function outer() {
+            const message = 'Hello World - courtesy of closure';
+            function inner() {
+                alert(message);
+            }
+            //this function is returned from the outer function before being executed
+            return inner; 
+        }
+        const myFunc = outer(); //returns the inner() function
+        myFunc(); //displays Hello World
+
+        document.getElementById("demo1").innerHTML = " lexical scoping and closure explained";
+
+
+
+    </script>
+
+
+</body>
+</html>
