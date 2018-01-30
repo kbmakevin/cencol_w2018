@@ -1,10 +1,91 @@
 Module pattern
 ---
+In software engineering, the module pattern is a design pattern used to implement the concept of software modules, defined by modular programming, in a programming language with incomplete direct support for the concept.
+
+This pattern can be implemented in several ways depending on the host programming language, such as the singleton design pattern, object-oriented static members in a class and procedural global functions.
+
+In software development, source code can be organized into components that accomplish a particular function or contain everything necessary to accomplish a particular task. Modular programming is one of those approaches.
+
+The concept of a “module” is not fully supported in many common programming languages.
+
+In order to consider that a Singleton or any group of related code implements this pattern, the following features must be supplied:
+    (
+        NOTE: 
+        In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+            e.g. using private constructor in Java class, then use static method to instantiate obj only if static varible is null
+
+            public class MySingleTon {
+     
+            private static MySingleTon myObj;
+            /**
+            * Create private constructor
+            */
+            private MySingleTon(){
+                
+            }
+            /**
+            * Create a static method to get instance.
+            */
+            public static MySingleTon getInstance(){
+                if(myObj == null){
+                    myObj = new MySingleTon();
+                }
+                return myObj;
+            }
+    )
+
+A portion of the code must have global or public access and be designed for use as global/public code. Additional private or protected code can be executed by the main public code.
+
+A module must have an initializer function that is equivalent to, or complementary to an object constructor method. This feature is not supported by regular namespaces.
+
+A module must have a finalizer function that is equivalent to, or complementary to an object destructor method. This feature is not supported by regular namespaces.
+
+Supporting members may require initialization/finalization code that is executed by the module’s initializer/finalizer function.
+
+Most members are functions that perform operations on elements external to the class, provided as arguments by calling functions. Such functions are “utilities”, “tools” or “libraries”.
+
+in 2015, es6 released, support for modules
+    export and imports
+
+Pre-es6, commonjs workaround
+---
+// helper/MathHelper.js
+module.exports = {
+  add: function(left, right) {
+    return left + right;
+  },
+
+  times: function(left, right) {
+    return left * right;
+  }
+}
+
+Implementation
+// program.js
+var mathHelper = require('./helper/MathHelper');
+
+console.log(mathHelper.add(5, 8)); // 13
+console.log(mathHelper.times(3, 4)); // 12
 
 ECMASCRIPT 2015
 ---
 es6
 classes became like C#/java classes
+
+// helper/MathHelper.js
+export function add(left, right) {
+  return left + right;
+}
+
+export function times(left, right) {
+  return left * right;
+}
+Implementation
+// program.js
+import { add, times } from './helper/MathHelper';
+
+console.log(add(5, 8)); // 13
+console.log(times(3, 4)); // 12
 
 Modules
 -
