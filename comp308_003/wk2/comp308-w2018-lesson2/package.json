@@ -2,7 +2,6 @@
   "name": "comp308-w2018-lesson2",
   "version": "1.0.0",
   "description": "NodeJS Demo with Exprss Middleware for COMP308",
-  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kbmakevin/cencol_w2018.git"
@@ -24,7 +23,7 @@
   "homepage": "https://github.com/kbmakevin/cencol_w2018#readme",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node index.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
