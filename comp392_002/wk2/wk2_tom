@@ -1,0 +1,95 @@
+typescript types 
+---
+boolean
+number
+string
+array
+enum
+any
+void
+
+interfaces
+---
+contract
+    forces programmer to user certain variables/methods
+
+there are 23 oop design patterns
+    look these up :)!
+
+{}
+is an object in javascript
+
+optional parameters
+    color?: string;
+
+if you have optional params, need to specify which u are passing into method when calling
+eg.
+
+interface SquareConfg {
+    color?:string;
+    width?:number;
+}
+
+function createSquare(config: SquareConfig) : {color: string; area: number}{
+    //default values
+    let newSquare={color:"white", area:100}
+    
+    //if it exists
+    if(config.color){
+        newSquare.color=config.color;
+    }
+
+    if(config.width){
+        newSquare.area=config.width*config.width
+    }
+
+    return newSquare;
+}
+
+let mySquare = createSquare({color: "black" });
+
+NOTE:
+    var myFunc = function(){};
+
+    runs faster than
+
+    function myFunc() {};
+
+classes
+---
+methods don't have function keyword in typescript classes, simply do the methodName(){}
+
+constructor method inside of classes in typescript
+
+when you extend, need to call superclass' constructor
+
+eg. class Snake extends Animal {
+        ...
+        constructor(name:string){super(name);}
+    }
+
+getter/setters
+---
+private _fullname:string;
+
+get fullName():string{
+    return this._fullname;
+}
+
+set fullName(newName:string):void{
+    if()...
+}
+
+static
+---
+can use the properties/methods without instantiating an obj of that class
+
+modules
+---
+module config{
+    export const SCREEN_WIDTH:number=640
+}
+
+//to access it outside
+config.SCREEN_WIDTH
+
