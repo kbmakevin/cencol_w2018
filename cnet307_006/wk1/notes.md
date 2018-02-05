@@ -1,18 +1,15 @@
 mov
 measurable organizational value
 
-dont need PMI...for those preparing for PMP exams
+we dont need PMI...it is only for those preparing for PMP exams
 
 only ned the 5th ed textbook by Jack Marchewka
-
-
 wiley - 4 device usage, $58/4
 
-
-internal provides resources and asks u to do a project -> sponsor
-
-external " " " -> client
-
+sponsor vs client
+---
+internal provides resources and asks u to do a project -> SPONSOR
+external " " " -> CLIENT
 
 time,money,resources, reputation (impacted from project)
 
@@ -37,7 +34,7 @@ a project can create
 ---
 product that can be either a component of another item, an enhancement of an item or an end item in itself;
 
-a ser vice or a capability to perform a service
+a service or a capability to perform a service
 	business function that supports production or distrubiton for example
 
 an improvoemtn in the existing product/;service lines
@@ -49,7 +46,7 @@ a result such as an outcome or document
 
 Example
 ---
-when i changed process ofr handling servers for rbc, that was a project
+when i changed process of handling servers for rbc, that was a project
 however when that became the norm for everyone to follow, that became an operaitons
 
 ITSM
@@ -124,7 +121,7 @@ customer relationship managmeent
 	know customer demographics, what they would buy etc
 
 The Sunk Cost Fallacy. 
-The Misconception: You make rational decisions based on the future value of objects, investments and experiences. The Truth: Your decisions are tainted by the emotional investments you accumulate, and the more you invest in something the harder it becomes to abandon it.Mar 25, 2011
+The Misconception: You make rational decisions based on the future value of objects, investments and experiences. The Truth: Your decisions are tainted by the emotional investments you accumulate, and the more you invest in something the harder it becomes to abandon it.
 
 need to avoid ^ when dealing with projects; e.g. by projected end date only achieved 25% of scope, dont dump billions of $$ more
 
@@ -150,3 +147,4 @@ when considering success or failure of a project ,we are only considering end re
 	e.g. traditional vs agile....we just look at the end results nd the expected scope;budget;scheduleand quality of the
  	     project
 
+		so we dont consider success/failure after every deliverable for projects following agile methodology
