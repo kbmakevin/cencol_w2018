@@ -7,17 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ch1 - 02 - My 3JS 1st Scene</title>
     <script src="../../libs/three.js"></script>
+    <script src="../../libs/stats.js"></script>
     <style>
         body {
             /* set margin to 0 and overflow to hidden, to use complete page */
             margin: 0;
             overflow: hidden
         }
+
+        .stats {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
     </style>
 </head>
 
 <body>
     <div id="my-webgl-output"></div>
+    <div id="my-stats-output"></div>
     <script>
         (function () {
             /**
@@ -59,18 +67,36 @@
                 let r = (Math.random() * 255).toFixed(0)
                 let g = (Math.random() * 255).toFixed(0)
                 let b = (Math.random() * 255).toFixed(0)
-                return { r, g, b }
+                return "rgb(" + r + "," + g + "," + b + ")";
             }
+
+            function Deg2Rad(angle_in_deg) {
+                return angle_in_deg / 180 * Math.PI;
+            }
+
 
             // returns boolean whether to generate wireframe or not, 50/50 chance
             function generateWireFrame() {
                 return Math.random() > 0.5
             }
 
-            function createBox(w = 20, h = 20, d = 20, col = 0x7777ff, wf = true, x = 10, y = 4, z = 2, sx = 1, sy = 1, sz = 1, rx, ry, rz) {
+            function initStats() {
+                let stats = new Stats();
+                frameCounter = 0
+                stats.setMode(0); //0=> fps, 1=> ms/frame
+                document.getElementById('my-stats-output').appendChild(stats.domElement);
+
+                return stats;
+            }
+
+            function createBoxMLM(w = 20, h = 20, d = 20, col = 0x7777ff, wf = true, x = 10, y = 4, z = 2, sx = 1, sy = 1, sz = 1, rx = 0, ry = 0, rz = 0) {
+
+            }
+
+            function createBox(w = 20, h = 20, d = 20, col = 0x7777ff, wf = true, x = 10, y = 4, z = 2, sx = 1, sy = 1, sz = 1, rx = 0, ry = 0, rz = 0) {
                 // create a box
                 let boxGeometry = new THREE.BoxGeometry(w, h, d)
-                let boxMaterial = new THREE.MeshBasicMaterial({
+                let boxMaterial = new THREE.MeshLambertMaterial({
                     color: col,
                     wireframe: wf,
                 })
@@ -93,12 +119,15 @@
                 return box
             }
 
+            let scene, camera, renderer, stats, frameCounter, spotlight;
+
             function init() {
-                var scene = new THREE.Scene()
-                var camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000)
-                camera.position.x = 30
-                camera.position.y = 50
-                camera.position.z = -30
+
+                stats = initStats()
+
+                scene = new THREE.Scene()
+                camera = new THREE.PerspectiveCamera(50, 4 / 3, 0.1, 1000)
+                camera.position.set(30, 50, 30)
 
                 camera.lookAt(scene.position)
 
@@ -119,57 +148,76 @@
                     let sy = .5 * Math.random() * 4
                     let sz = .5 * Math.random() * 4
 
-                    // console.log(generateRandomColor())
-                    let randomColorObj = generateRandomColor()
-                    let colorR = randomColorObj.r
-                    let colorG = randomColorObj.g
-                    let colorB = randomColorObj.b
-                    let genColor = "rgb(" + colorR + "," + colorG + "," + colorB + ")"
-                    // let genColor = new THREE.Color(colorR, colorG, colorB)
-                    console.log(genColor)
-
-                    let sphere = createSphere(r, w, h, genColor, generateWireFrame(), px, py, pz, sx, sy, sz)
-                    // let sphere = createSphere(r, 15, 15, 0xff0000, true, px, py, pz, sx, sy, sz)
-                    scene.add(sphere)
-                    // console.log('sphere color is: ' + sphere.material.vertexColors)
-                    // scene.add(createBox())
+                    let sphere = createSphere(r, w, h, generateRandomColor(), generateWireFrame(), px, py, pz, sx, sy, sz)
+                    // scene.add(sphere)
                 }
 
                 // generate random boxes
                 for (let index = 0; index < 15; index++) {
-                    let dx = 0.1 * Math.random() * 2
-                    let dy = 0.1 * Math.random() * 2
-                    let dz = 0.1 * Math.random() * 2
+                    let w = 5 * Math.random() * 2
+                    let h = 5 * Math.random() * 4
+                    let d = 5 * Math.random() * 1
 
-                    let px = -20 + Math.random() * 40
-                    let py = -5 + Math.random() * 20
-                    let pz = -10 + Math.random() * 40
+                    let px = -10 + Math.random() * 20
+                    // let px = -20 + Math.random() * 40
+                    let py = h / 2
+                    let pz = -10 + Math.random() * 20
 
-                    let sx = 25 * Math.random() * 4
-                    let sy = 25 * Math.random() * 4
-                    let sz = 25 * Math.random() * 4
+                    // let sx = 25 * Math.random() * 4
+                    // let sy = 25 * Math.random() * 4
+                    // let sz = 25 * Math.random() * 4
 
-                    let rx = Math.random() * 0.785398
-                    let ry = Math.random() * 0.785398
-                    let rz = Math.random() * 0.785398
+                    // let rx = Math.random() * Deg2Rad(45)
+                    // let ry = Math.random() * Deg2Rad(45)
+                    // let rz = Math.random() * Deg2Rad(45)
 
-                    let randomColorObj = generateRandomColor()
-                    let colorR = randomColorObj.r
-                    let colorG = randomColorObj.g
-                    let colorB = randomColorObj.b
-                    let genColor = "rgb(" + colorR + "," + colorG + "," + colorB + ")"
-
-                    let box = createBox(dx, dy, dz, genColor, generateWireFrame(), px, py, pz, sx, sy, sz, rx, ry, rz)
-                    // createSphere(r, 15, 15, genColor, false, px, py, pz, sx, sy, sz)
+                    let box = createBox(w, h, d, generateRandomColor(), generateWireFrame(), px, py, pz)
                     scene.add(box)
                 }
 
-                var renderer = new THREE.WebGLRenderer()
-                // renderer.setClearColor()
+                // add a plane
+                let planeGeometry = new THREE.PlaneGeometry(20, 20, 2, 2)
+                let planeMaterial = new THREE.MeshLambertMaterial({
+                    color: 0xeeeeee,
+                    wireframe: false
+                });
+                let plane = new THREE.Mesh(planeGeometry, planeMaterial);
+                plane.position.set(0, 0, 0)
+                plane.scale.set(2, 2, 1)
+                plane.rotation.set(Deg2Rad(-90), 0, 0)
+                plane.position.set(plane.position.x + 10, plane.position.y, plane.position.z + 10)
+                scene.add(plane);
+
+                spotlight = new THREE.SpotLight()
+                spotlight.position.set(0, 30, 0)
+                scene.add(spotlight)
+
+                renderer = new THREE.WebGLRenderer()
                 renderer.setClearColor(new THREE.Color(0xEEFFEE))
-                renderer.setSize(window.innerWidth, window.innerHeight)
+                renderer.setSize(1024, 768)
 
                 document.getElementById('my-webgl-output').appendChild(renderer.domElement)
+                renderer.render(scene, camera)
+
+                // renderScene(renderScene, scene, camera)
+                renderScene()
+            }
+
+            function renderScene() {
+                frameCounter += 1;
+
+                let t = frameCounter * 0.01;
+
+                let x = spotlight.position.x;
+                let y = spotlight.position.y;
+                let z = spotlight.position.z;
+
+                spotlight.position.set(x * Math.sin(t) - 10, 40, z * Math.cos(t) - 10);
+
+                // scene.rotation.set(x * Math.sin(t) - 10);
+
+                stats.update();
+                requestAnimationFrame(renderScene)
                 renderer.render(scene, camera)
             }
 
