@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+
+    <body>
+        <div class="container">
+            <h1>
+                <%= title %>
+            </h1>
+
+            <div class="form-group">
+                <label>First Name:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Last Name:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Favorite Subject:</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" class="form-control" value='<%= username %>' disabled>
+            </div>
+            <div class="form-group">
+                <label>Your comments:</label>
+                <textarea class='form-control' required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submitBtn" class="btn btn-primary form-control" onclick="location.href='/thankyou'">Submit</button>
+            </div>
+        </div>
+
+        <% include ../partials/scripts %>
+    </body>
+
+</html>

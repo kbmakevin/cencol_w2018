@@ -1,0 +1,7 @@
+Objectives:
+    Define JavaScript closures and event-driven programming with Node.js.
+    Describe Connect web framework and Connect's middleware pattern.
+    Define CommonJS modules and the Node.js module system
+    Introduction to the Connect web framework
+    Connect's middleware pattern
+    Create Node.js applications using Connect middleware

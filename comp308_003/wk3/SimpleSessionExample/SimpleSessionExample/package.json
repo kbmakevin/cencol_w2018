@@ -1,0 +1,14 @@
+{
+  "name": "simple-session-example",
+  "version": "0.0.0",
+  "description": "SimpleSessionExample",
+  "main": "server.js",
+  "author": {
+    "name": "inika"
+  },
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6"
+  }
+}
