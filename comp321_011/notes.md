@@ -1,3 +1,4 @@
+# Week1
 - only 20% companies have erp
 - this course not only about erp, relevant for us to go into work
 - quiz 1 on feb2, friday
@@ -65,3 +66,15 @@ complexity
 
 10. Data integration increses data duplication and does not facilitate reconciliations among systems.
     -  **false**, data integration reduces data duplication and reconciliations among systems
+---
+
+# Week2
+- netsuite, complete ERP in the cloud
+    - bought out by Oracle
+
+---
+
+# Week3
+- showed lots of pictures in wk3 on ecent
+- started lec slides: relational dbms
+- 
