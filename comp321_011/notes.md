@@ -77,4 +77,63 @@ complexity
 # Week3
 - showed lots of pictures in wk3 on ecent
 - started lec slides: relational dbms
+
+---
+
+# Week4
+- read all slides, some stuff on test not from txtbk but in the other slides
+- EAI & ERPs
+- strong vs weak entitiees
+- why are we interested in categorizing data?
+    - e.g. master, transaction, etc.
+    - when we migrate data, it can easily take up to 1-2 years
+    - master data should be prioritized, need to be able to easily find it
+    - this data is critical to the company, need to back it up, etc.
+
+## EAI
+- Enterprise Application Integration
+
+### ERP vs EAI
+- eai cheaper measure, if u cannot afford erp
+- business process restructuring (BPR)
+- erp has all business processes, u adapt to erp
+- eai allows u to retain some of ur business processes
+- erp takes long to implement, depends on business (2-3 yrs possibly)
+
+- one soln w/o eai, need to have domain knowledge of everything to be able to connect it to the e-commerce site
+    - very complicated
+
+- EAI, central node
+    - ppl need to have lots of domain knowledge here
+    - it is a means to delay the neccessity to get an ERP
+    - lots of diff transformations happening here
+        - e.g. one module may use ascii, another one utf, etc.
+
+- ODS, operational data store
+    - used as temp database
+
+- remote procedure call (RPC)
+    - comes from UNIX
+    - calling a function which resides in a diff sys
+    - e.g. verifying cibc credit cards
+        - u dont have the logic/data for ccs on ur side
+        - u send request/call to cibc, they return t/f to u
+
+## Cloud Computing
+- the internet was more influential than the industrial revolution!
+- can be divided into two models
+1. Deployment Models
+    - define the type of access to the cloud
+
+- community cloud
+    - e.g. credit rating, all banks access the same "cloud"
+
+2. Service Models
+    - reference models on which the Cloud Computing is based
+
+- IaaS, potential issue
+    - shared rsrcs, if someone else pays more than u, ur jobs may be lower priority
+
+- https://doublehorn.com/saas-paas-and-iaas-understanding/
+
 - 
