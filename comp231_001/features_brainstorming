@@ -1,0 +1,105 @@
+Brainstorm features for our Task Management Software
+---
+create general todo tasks
+
+create projects
+
+create tasks
+
+assign tasks to projects
+
+delete tasks
+
+update tasks
+
+complete tasks, doesnt delete them but changes status of the tasks in database
+
+assign tasks different priorities
+
+assign projects different priorities
+
+drag-and-drop ui interface
+
+add photos to tasks to update tasks
+
+registration to individual account
+
+login to individual account
+
+registration to organization account
+
+login to organization account
+
+user accounts can be added to organizations where they will be able to CRUD shared pool of tasks
+
+users will be able to see any of their own tasks as well as any tasks for oranizations they belong to
+
+users can have different views of tasks
+    all personal
+    all for each specific organization they joined
+    all tasks, includes everything
+
+stats to monitor total number of tasks user has completed successfully
+stats to monitor total number of tasks user has failed to finish on time
+
+experience points associated with each task
+
+when creating a task, can associate difficulty of task - we will have a formula which determines # exp points they get from accomplishing task
+    may be based on time as well?
+
+organization accounts can be logged in using credentials, only know to organization administrator
+
+ability to view all users registerd to our Software
+
+ability to filter user views 
+
+ability to sort user views
+
+sends notifications via email to user 
+
+ability to set different notifications per task when updating/creating tasks
+
+add labels to tasks
+
+can filter tasks by labels
+
+can add brief comments to a task when updating it
+    detailing progress/blockers/complications
+
+can share tasks with other users
+    collaboration, requesting assistance
+
+cross-platform as it is web app
+
+color changes as the remaining time for a task to be completed changes 
+    e.g. from green -> red when deadling approaching
+
+can create subtasks for an existing task
+
+the main task is only finished when all subtasks are completed
+    use for dependencies
+    similar to kanban board (JIRA)
+
+can add files to a task, saved to database
+
+can generate a report of a user when viewing their profile, exported as pdf
+
+can generate a report of an organization when viewing their profile, exported as pdf
+
+can view organiztion profile
+
+can view organization logo
+
+can view organization members
+
+can view organization tasks
+
+can filter tasks by completed, in progress, to be started
+
+can change status of tasks to compelted, in progress or to be started
+
+in tasks view, there will be three swimlanes, can drag and drop tasks from one to another
+    to be started
+    in progress
+    completed
+
