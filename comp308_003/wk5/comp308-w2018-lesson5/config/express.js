@@ -24,6 +24,7 @@ mongoDB.once('open', () => {
 
 
 let index = require('../app/routes/index'); // define the main route
+let games = require('../app/routes/games'); // define the game route
 
 let app = express();
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../node_modules')));
 
 app.use('/', index); // main routing file
+app.use('/games', games); // games routing file
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
