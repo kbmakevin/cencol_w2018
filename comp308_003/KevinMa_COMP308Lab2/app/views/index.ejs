@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include ../partials/head %>
+
+    <body>
+        <div class="container">
+            <h1>
+                <%= title %>
+            </h1>
+            <div class="card">
+                <!-- this works because in config/express.js we are serving static files from ./public/ -->
+                <img src="img/cencol_banner.jpeg" alt="Banner of Centennial College" class="card-img-top">
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <input type="email" class="form-control" aria-describedby="helpId" placeholder="kma45@my.centennialcollege.ca" required name="username">
+                            <small id="helpId" class="form-text text-muted">Note: Your username will be used to populate the email field on the feedback form.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" class="form-control" name="password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success" style="width:100%;">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- JavaScript Section -->
+        <% include ../partials/scripts %>
+    </body>
+
+</html>
