@@ -1,7 +1,7 @@
 {
-  "name": "kevinma_comp308lab1",
-  "version": "1.0.0",
-  "description": "This is an Express Web Application which allows the customers to provide feedback for services of a company.",
+  "name": "kevinma_comp308lab2",
+  "version": "1.0.1",
+  "description": "This application builds upon a web app developed with Express to implement a MongoDB data store.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,6 +9,7 @@
   "keywords": [
     "Node.js",
     "Express",
+    "MongoDB",
     "MVC",
     "Web",
     "App"
@@ -19,6 +20,7 @@
     "body-parser": "^1.18.2",
     "ejs": "^2.5.2",
     "express": "^4.16.2",
-    "express-session": "^1.14.1"
+    "express-session": "^1.14.1",
+    "mongoose": "^5.0.8"
   }
 }

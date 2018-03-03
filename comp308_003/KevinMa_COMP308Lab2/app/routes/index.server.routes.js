@@ -1,14 +1,26 @@
-//This uses CommonJS module pattern to export a single module function.
-//This function takes an express object as argument 
-//Then it requires the index controller and uses its render() method as a middleware to GET requests made to the root path.
+/**
+ * This uses CommonJS module pattern to export a single module function
+ * This function takes an express obj as arg
+ * Then it requires the index controller and uses its render() method as a middleware to different VERB requests made to specified paths
+ * @param {Express} app 
+ */
 module.exports = (app) => {
-    let index = require('../controllers/index.server.controller');
-    let feedback = require('../controllers/feedback.server.controller');
-    let thankyou = require('../controllers/thankyou.server.controller');
+    const index = require('../controllers/index.server.controller');
+    const feedback = require('../controllers/feedback.server.controller');
+    const thankyou = require('../controllers/thankyou.server.controller');
+    const customers = require('../controllers/customers.server.controller');
 
-    app.get('/', index.render);
+    /**
+     * app.route(path).VERB([callback...], callback)
+     * allows us to specify multiple HTTP verbs for one path
+     */
     // NOTE: we do app.post here because we are submitting the form via POST request to /, not a get of feedback!
-    // app.get('/feedback', feedback.render);
-    app.post('/', feedback.render);
+    app.route('/')
+        .get(index.render)
+        .post(feedback.render);
+
     app.get('/thankyou', thankyou.render);
+
+    app.route('signup')
+        .post(customers.create);
 }

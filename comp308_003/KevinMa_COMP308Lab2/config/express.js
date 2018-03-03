@@ -1,8 +1,8 @@
 // load the module dependencies
-let express = require('express');
-let config = require('./config');
-let session = require('express-session');
-let bodyParser = require('body-parser');
+const express = require('express');
+const config = require('./config');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
 module.exports = () => {
     // create a new express app
@@ -25,6 +25,10 @@ module.exports = () => {
         extended: true
     }));
 
+    /**
+     * app.set(name, value)
+     * sets env var that express will use in its configuration
+     */
     // set the application view engine and 'views' folder
     app.set('views', './app/views');
     app.set('view engine', 'ejs');
@@ -33,6 +37,7 @@ module.exports = () => {
     require('../app/routes/index.server.routes.js')(app);
 
     // serving static files
+    // NOTE: order matters here, if static files above routes, HTTP req would look in static files folder first before routes; this would make responses a lot slower as it would have to wait for a filesystem I/O operation
     app.use(express.static('./public'));
 
     // return the express application instance
