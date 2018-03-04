@@ -16,7 +16,7 @@ exports.list = (req, res, next) => {
         // Query object - MongoDB Query Object
         {},
         // [Fields] - optional, can specify fields to return separated by a space, can exclude specific fields, prefix with '-'
-        '-_id',
+        '_id firstName lastName email password age program',
         // [Options] - optional options object
         {
             // skip the first 2 matching documents
@@ -31,10 +31,13 @@ exports.list = (req, res, next) => {
         });
 };
 
+// 'read' controller method to display a customer
 exports.read = (req, res) => {
+    // Use the 'response' object to send a JSON response
     res.json(req.customer);
 };
 
+// finds a customer their email address
 exports.customerByEmail = (req, res, next, email) => {
     Customer.findOne(
         // conditions
@@ -47,4 +50,31 @@ exports.customerByEmail = (req, res, next, email) => {
             req.customer = customer;
             next();
         });
+};
+
+exports.update = (req, res, next) => {
+    Customer.findOneAndUpdate(
+        {
+            email: req.customer.email,
+        },
+        req.body,
+        // {
+        //     firstName: "Kevin",
+        //     lastName: "Ma"
+        // },
+        {
+            new: true
+        },
+        (err, customer) => {
+            res.json(customer);
+            if (err) return next(err);
+            res.json(customer);
+        });
+};
+
+exports.delete = (req, res, next) => {
+    req.customer.remove(err => {
+        if (err) return next(err);
+        res.json(req.customer);
+    })
 };
