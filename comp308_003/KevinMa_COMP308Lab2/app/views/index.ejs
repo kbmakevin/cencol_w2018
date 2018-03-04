@@ -1,36 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<% include ./partials/header %>
 
-<% include ./partials/head %>
-
-    <body>
-        <div class="container">
-            <h1>
-                <%= title %>
-            </h1>
-            <div class="card">
-                <!-- this works because in config/express.js we are serving static files from ./public/ -->
-                <img src="img/cencol_banner.jpeg" alt="Banner of Centennial College" class="card-img-top">
-                <div class="card-body">
-                    <form method="post">
-                        <div class="form-group">
+    <div class="container">
+        <h1>
+            <%= title %>
+        </h1>
+        <div class="card">
+            <!-- this works because in config/express.js we are serving static files from ./public/ -->
+            <img src="img/cencol_banner.jpeg" alt="Banner of Centennial College" class="card-img-top">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group row">
+                        <div class="col-4 text-right">
+                            <!-- <div class="form-group text-center"> -->
                             <label>Username:</label>
-                            <input type="email" class="form-control" aria-describedby="helpId" placeholder="kma45@my.centennialcollege.ca" required name="username">
-                            <small id="helpId" class="form-text text-muted">Note: Your username will be used to populate the email field on the feedback form.</small>
                         </div>
+                        <!-- <div class="d-flex"> -->
+                        <div class="col-md-5">
+                            <input type="email" class="form-control" aria-describedby="helpId" placeholder="kma45@my.centennialcollege.ca" required name="username">
+                            <small id="helpId" class="form-text text-muted">Note: Your username is the email you registered an account with.</small>
+                        </div>
+                        <!-- </div> -->
+                    </div>
 
-                        <div class="form-group">
+                    <div class="form-group row">
+                        <div class="col-4 text-right">
                             <label>Password:</label>
+                        </div>
+                        <div class="col-md-5">
                             <input type="password" class="form-control" name="password" required>
                         </div>
+                    </div>
 
-                        <button type="submit" class="btn btn-outline-success" style="width:100%;">Login</button>
-                    </form>
-                </div>
+                    <div class="row">
+                        <div class="col-4 offset-4">
+                            <div class="btn-group d-flex">
+                                <button type="submit" class="btn btn-outline-success w-100">Login</button>
+                                <a href="signup" class="btn btn-outline-info w-100">Signup</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <!-- JavaScript Section -->
-        <% include ./partials/scripts %>
-    </body>
+    </div>
 
-</html>
+    <% include ./partials/footer %>
