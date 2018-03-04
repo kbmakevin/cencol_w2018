@@ -6,6 +6,7 @@
  */
 module.exports = (app) => {
     const index = require('../controllers/index.server.controller');
+    const signup = require('../controllers/signup.server.controller');
     const feedback = require('../controllers/feedback.server.controller');
     const thankyou = require('../controllers/thankyou.server.controller');
     const customers = require('../controllers/customers.server.controller');
@@ -21,6 +22,7 @@ module.exports = (app) => {
 
     app.get('/thankyou', thankyou.render);
 
-    app.route('signup')
+    app.route('/signup')
+        .get(signup.render)
         .post(customers.create);
 }
