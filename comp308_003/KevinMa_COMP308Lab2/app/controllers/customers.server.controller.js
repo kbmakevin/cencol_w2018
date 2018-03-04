@@ -39,17 +39,11 @@ exports.read = (req, res) => {
 
 // finds a customer their email address
 exports.customerByEmail = (req, res, next, email) => {
-    Customer.findOne(
-        // conditions
-        {
-            email: email
-        },
-        // callback
-        (err, customer) => {
-            if (err) return next(err);
-            req.customer = customer;
-            next();
-        });
+    Customer.findOneByEmail(email, (err, customer) => {
+        if (err) return next(err);
+        req.customer = customer;
+        next();
+    });
 };
 
 exports.update = (req, res, next) => {
