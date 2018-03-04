@@ -5,8 +5,13 @@ let CustomerSchema = new Schema({
     firstName: String,
     lastName: String,
     email: String,
-    username: String,
-    password: String
-});
+    password: String,
+    // two custom fields for assignment 2
+    age: Number,
+    program: String
+},
+    {
+        versionKey: false
+    });
 
 mongoose.model('Customer', CustomerSchema);

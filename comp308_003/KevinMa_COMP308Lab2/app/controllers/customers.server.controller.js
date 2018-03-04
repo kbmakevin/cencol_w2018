@@ -7,5 +7,5 @@ exports.create = (req, res, next) => {
         if (err) return next(err);
         // saves customer and outputs the customer object
         else res.json(customer);
-    })
-}
+    });
+};

@@ -24,5 +24,8 @@ module.exports = (app) => {
 
     app.route('/signup')
         .get(signup.render)
-        .post(customers.create);
+        .post(
+            // signup.validatePassword,
+            customers.create
+        );
 }
