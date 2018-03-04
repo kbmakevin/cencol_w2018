@@ -33,8 +33,11 @@ module.exports = () => {
     app.set('views', './app/views');
     app.set('view engine', 'ejs');
 
-    // load the 'index' routing file, passing in the express application as an argument
+    // load the routing files, passing in the express application as an argument
     require('../app/routes/index.server.routes.js')(app);
+    require('../app/routes/signup.server.routes.js')(app);
+    require('../app/routes/thankyou.server.routes.js')(app);
+    require('../app/routes/viewcustomerfeedback.server.routes.js')(app);
 
     // serving static files
     // NOTE: order matters here, if static files above routes, HTTP req would look in static files folder first before routes; this would make responses a lot slower as it would have to wait for a filesystem I/O operation

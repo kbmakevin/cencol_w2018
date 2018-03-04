@@ -16,7 +16,7 @@ exports.list = (req, res, next) => {
         // Query object - MongoDB Query Object
         {},
         // [Fields] - optional, can specify fields to return separated by a space, can exclude specific fields, prefix with '-'
-        '-_id firstName lastName',
+        '-_id',
         // [Options] - optional options object
         {
             // skip the first 2 matching documents
@@ -28,5 +28,23 @@ exports.list = (req, res, next) => {
         (err, customers) => {
             if (err) return next(err);
             res.json(customers);
+        });
+};
+
+exports.read = (req, res) => {
+    res.json(req.customer);
+};
+
+exports.customerByEmail = (req, res, next, email) => {
+    Customer.findOne(
+        // conditions
+        {
+            email: email
+        },
+        // callback
+        (err, customer) => {
+            if (err) return next(err);
+            req.customer = customer;
+            next();
         });
 };

@@ -6,10 +6,7 @@
  */
 module.exports = (app) => {
     const index = require('../controllers/index.server.controller');
-    const signup = require('../controllers/signup.server.controller');
     const feedback = require('../controllers/feedback.server.controller');
-    const thankyou = require('../controllers/thankyou.server.controller');
-    const customers = require('../controllers/customers.server.controller');
 
     /**
      * app.route(path).VERB([callback...], callback)
@@ -19,16 +16,4 @@ module.exports = (app) => {
     app.route('/')
         .get(index.render)
         .post(feedback.render);
-
-    app.get('/thankyou', thankyou.render);
-
-    app.route('/signup')
-        .get(signup.render)
-        .post(
-            // signup.validatePassword,
-            customers.create
-        );
-
-    app.route('/users')
-        .get(customers.list)
 }
