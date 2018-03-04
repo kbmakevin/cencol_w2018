@@ -28,4 +28,7 @@ module.exports = (app) => {
             // signup.validatePassword,
             customers.create
         );
+
+    app.route('/users')
+        .get(customers.list)
 }
