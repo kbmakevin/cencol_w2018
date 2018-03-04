@@ -3,7 +3,7 @@ exports.render = (req, res, next) => {
     req.session.username = req.body.username;
 
     res.render('feedback', {
-        title: 'Student Feedback',
+        title: 'Student Feedback Form',
         username: req.session.username
     });
 };

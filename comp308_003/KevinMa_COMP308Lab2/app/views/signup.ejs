@@ -27,7 +27,8 @@
                 <label>Email:</label>
             </div>
             <div class="col-md-5">
-                <input type="email" class="form-control" placeholder="jdoe@my.centennialcollege.ca" required name="email">
+                <input type="text" class="form-control" placeholder="jdoe@my.centennialcollege.ca" required name="email" pattern="^.+@.+\..+$"
+                    onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must be in the format of xxx@xxx.xxx' : '');">
             </div>
         </div>
 
@@ -37,7 +38,8 @@
                 <label>Password:</label>
             </div>
             <div class="col-md-5">
-                <input type="password" class="form-control" name="password" required>
+                <input type="password" class="form-control" name="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.confirmPassword.pattern = this.value;"
+                    required>
             </div>
         </div>
         <div class="form-group row">
@@ -45,7 +47,8 @@
                 <label>Confirm Password:</label>
             </div>
             <div class="col-md-5">
-                <input type="password" class="form-control" name="confirmPassword" required>
+                <input type="password" class="form-control" name="confirmPassword" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+                    required>
             </div>
         </div>
 
@@ -55,7 +58,7 @@
                 <label>Age:</label>
             </div>
             <div class="col-md-5">
-                <input type="number" class="form-control" name="age" placeholder="12" required>
+                <input type="number" class="form-control" name="age" placeholder="12" min="0" required>
             </div>
         </div>
 
