@@ -7,6 +7,10 @@ let FeedbackSchema = new Schema({
         required: true,
         trim: true,
     },
+    created: {
+        type: Date,
+        default: Date.now
+    },
     author: {
         // Mongoose DBRef simulates joins of RDBMS joins
         // 1. using the ObjectID schema type and the ref property  to create DBRef

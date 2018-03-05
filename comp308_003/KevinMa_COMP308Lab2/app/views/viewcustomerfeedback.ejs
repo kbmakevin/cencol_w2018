@@ -1,0 +1,52 @@
+<% include ./partials/header %>
+
+    <div class="row">
+        <div class="col">
+            <h4>Customer Name</h4>
+        </div>
+        <div class="col">
+            <h4>Customer Email</h4>
+        </div>
+        <div class="col">
+            <h4>Customer Feedback</h4>
+        </div>
+        <div class="col">
+            <h4>Feedback Date</h4>
+        </div>
+    </div>
+
+    <% for(var i=0; i < customers.length; i++) { %>
+        <div class="row">
+            <div class="col">
+                <p>
+                    <%= customers[i].fullName %>
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    <%= customers[i].email %>
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    <!-- <%= customers[i].email %> -->
+                </p>
+            </div>
+            <div class="col">
+                <p>
+                    <!-- <%= customers[i].email %> -->
+                </p>
+            </div>
+        </div>
+        <% } %>
+
+            <br>
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <div class="btn-group d-flex">
+                        <a href="/" class="btn btn-outline-info w-100">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+
+            <% include ./partials/footer %>

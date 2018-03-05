@@ -56,7 +56,7 @@ let CustomerSchema = new Schema({
     });
 
 // Virtual Attributes
-CustomerSchema.virtual('fullName').get(() => { return this.firstName + this.lastName; });
+CustomerSchema.virtual('fullName').get(function () { return this.firstName + " " + this.lastName; });
 
 // Static Methods
 CustomerSchema.statics.findOneByEmail = function (email, callback) {
@@ -71,15 +71,17 @@ CustomerSchema.methods.authenticate = function (password) {
 // Mongoose middleware can intercept process of the: init, validate, save, and remove instance methods
 
 // Pre-Middleware
-CustomerSchema.pre('save', (next) => {
+CustomerSchema.pre('save', function (next) {
     // things to do before saving document e.g. complex validation here...
+    this.wasNew = this.isNew;
+    next();
 });
 
 // Post-Middleware
 CustomerSchema.post('save', function (next) {
     // perfect for logging application logic
-    if (this.isNew) {
-        console.log('A new user was created ' + this.email);
+    if (this.wasNew) {
+        console.log('A new user was created: ' + this.email);
     } else {
         console.log(this.email + ' has updated its details');
     }

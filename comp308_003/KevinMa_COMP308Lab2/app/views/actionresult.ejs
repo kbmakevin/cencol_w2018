@@ -1,0 +1,30 @@
+<!-- 
+    this page is used to display the results of certain actions:
+        - authentication
+        - sign up
+        - etc.
+    will provide button to return to login page
+-->
+
+<% include ./partials/header %>
+
+    <div class="row">
+        <div class="offset-2 col-8">
+            <p>
+                <%= result %>
+            </p>
+            <p>
+                <%= content %>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4 offset-4">
+            <div class="btn-group d-flex">
+                <a href="/" class="btn btn-outline-info w-100">Proceed to Login</a>
+            </div>
+        </div>
+    </div>
+
+    <% include ./partials/footer %>
