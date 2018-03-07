@@ -59,7 +59,10 @@ exports.findCustomerByEmail = (req, res, next) => {
     req.session.inputPassword = req.body.password
 
     CustomerModel.findOneByEmail(email, (err, customer) => {
-        if (err) return next(err);
+        if (err) {
+            req.session.customer = null;
+            next()
+        }
         // save the found customer in session state because everything going forward (prior to logging out) will be using this customer document
         req.session.customer = customer;
         next();
@@ -67,20 +70,28 @@ exports.findCustomerByEmail = (req, res, next) => {
 };
 
 exports.authenticateCustomer = function (req, res, next) {
-    req.email = req.session.customer.email
-    req.password = req.session.customer.password
+    if (req.session.customer) {
+        req.email = req.session.customer.email
+        req.password = req.session.customer.password
 
-    req.actionTitle = 'Login';
-    req.actionResultsContent = 'Incorrect credentials entered.\n\nPlease try again!';
+        req.actionTitle = 'Login';
+        req.actionResultsContent = 'Incorrect credentials entered.\n\nPlease try again!';
 
-    if (req.session.customer.authenticate(req.session.inputPassword)) {
-        console.log('authenticated');
-        req.actionResult = 'Authenticated'
-        next()
-    }
-    else {
-        req.actionResult = 'Failed to Authenticate'
-        console.log('failed to authenticate!');
+        if (req.session.customer.authenticate(req.session.inputPassword)) {
+            console.log('authenticated');
+            req.actionResult = 'Authenticated'
+            next()
+        }
+        else {
+            req.actionResult = 'Failed to Authenticate'
+            console.log('failed to authenticate!');
+            next()
+        }
+    } else {
+        req.actionTitle = 'Login';
+        req.actionResult = 'Cannot find user'
+        req.actionResultsContent = 'You have entered a username not currently registered with our application.\n\nPlease try again!';
+
         next()
     }
 };
