@@ -30,10 +30,20 @@ exports.create = (req, res, next) => {
 };
 
 exports.list = (req, res, next) => {
+
+    let queryObj = {};
+
+    if (req.body.username) {
+        queryObj = {
+            email: req.body.username
+        }
+    }
+
     // empty MongoDB query object returns all documents in the collection
     CustomerModel.find(
         // Query object - MongoDB Query Object
-        {},
+        queryObj,
+        // {},
         // [Fields] - optional, can specify fields to return separated by a space, can exclude specific fields, prefix with '-'
         // 'firstName lastName email password age program',
         // [Options] - optional options object

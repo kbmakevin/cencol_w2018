@@ -13,9 +13,13 @@ module.exports = (app) => {
 
     app.route('/viewcustomerfeedback')
         .get(
+            // customers.list,
+            viewcustomerfeedback.render
+        )
+        .post(
             customers.list,
             viewcustomerfeedback.render
-        );
+        )
 
     // POOR DESIGN - remember not  to do this next time :)
     // ---

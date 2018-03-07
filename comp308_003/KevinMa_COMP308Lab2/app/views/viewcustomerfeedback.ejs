@@ -9,60 +9,95 @@
 
 <% include ./partials/header %>
 
-    <div class="row border" style="background-color:#f7f7f7;">
-        <div class="col border-right">
-            <h4>Customer Name</h4>
-        </div>
-        <div class="col border-right">
-            <h4>Customer Email</h4>
-        </div>
-        <div class="col border-right">
-            <h4>Customer Feedback</h4>
-        </div>
-        <div class="col">
-            <h4>Feedback Date</h4>
-        </div>
-    </div>
-
-    <% for(let i=0; i < customers.length; i++) { %>
-        <!-- for each customer display all their feedback -->
-        <% for(let a=0; a < customers[i].feedbacks.length; a++) { %>
-
-            <div class="row">
-                <div class="col border-right border-left border-bottom">
-                    <p>
-                        <%= customers[i].fullName %>
-                    </p>
-                </div>
-                <div class="col border-right border-bottom">
-                    <p>
-                        <%= customers[i].email %>
-                    </p>
-                </div>
-                <div class="col border-right border-bottom">
-                    <p>
-                        <%= customers[i].feedbacks[a].comments %>
-                            <!-- <%= customers[i].email %> -->
-                    </p>
-                </div>
-                <div class="col border-right border-bottom">
-                    <p>
-                        <%= customers[i].feedbacks[a].created %>
-                            <!-- <%= customers[i].email %> -->
-                    </p>
+    <form method="post">
+        <div class="row">
+            <div class="col">
+                <div class="form-group row">
+                    <div class="col-4 text-right">
+                        <label>Username:</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="email" class="form-control" aria-describedby="helpId" placeholder="Leave blank to see all customer's feedbacks"
+                            name="username">
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-outline-success w-100">Search</button>
+                        <!-- <button type="submit" class="btn btn-outline-success w-100" onclick="$('#feedback-table').css('display','block')">Search</button> -->
+                    </div>
                 </div>
             </div>
-            <% } %>
+        </div>
+    </form>
+    <hr>
+    <br>
 
-                <% } %>
+    <%if (customers.length>0) { %>
 
-                    <br>
+        <div id="feedback-table" style="display: block">
+            <div class="row border" style="background-color:#f7f7f7;">
+                <div class="col border-right">
+                    <h4>Customer Name</h4>
+                </div>
+                <div class="col border-right">
+                    <h4>Customer Email</h4>
+                </div>
+                <div class="col border-right">
+                    <h4>Customer Feedback</h4>
+                </div>
+                <div class="col">
+                    <h4>Feedback Date</h4>
+                </div>
+            </div>
+
+            <% for(let i=0; i < customers.length; i++) { %>
+                <!-- for each customer display all their feedback -->
+                <% for(let a=0; a < customers[i].feedbacks.length; a++) { %>
+
                     <div class="row">
-                        <div class="col-4 offset-4">
-                            <div class="btn-group d-flex">
-                                <a href="/" class="btn btn-outline-info w-100">Return to Home</a>
-                            </div>
+                        <div class="col border-right border-left border-bottom">
+                            <p>
+                                <%= customers[i].fullName %>
+                            </p>
+                        </div>
+                        <div class="col border-right border-bottom">
+                            <p>
+                                <%= customers[i].email %>
+                            </p>
+                        </div>
+                        <div class="col border-right border-bottom">
+                            <p>
+                                <%= customers[i].feedbacks[a].comments %>
+                                    <!-- <%= customers[i].email %> -->
+                            </p>
+                        </div>
+                        <div class="col border-right border-bottom">
+                            <p>
+                                <%= customers[i].feedbacks[a].created %>
+                                    <!-- <%= customers[i].email %> -->
+                            </p>
                         </div>
                     </div>
+                    <% } %>
 
-                    <% include ./partials/footer %>
+                        <% } %>
+        </div>
+        <hr>
+        <% } %>
+
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <div class="btn-group d-flex">
+                        <a href="/" class="btn btn-outline-info w-100">Return to Home</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <% if (customers.length > 0) { %>
+        <script>
+
+            $('#feedback-table').css('display', 'block')
+        </script>
+        <% } %> -->
+
+
+            <% include ./partials/footer %>
