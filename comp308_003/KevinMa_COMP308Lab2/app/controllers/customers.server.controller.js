@@ -1,7 +1,16 @@
-const Customer = require('mongoose').model('Customer');
+/**
+ * 
+ * @file        customers.server.controller.js
+ * @description this component is used to handle application logic for Customer Model
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
+const CustomerModel = require('mongoose').model('Customer');
 
 exports.create = (req, res, next) => {
-    let customer = new Customer(req.body);
+    let customer = new CustomerModel(req.body);
 
     customer.save(function (err) {
         req.actionTitle = 'Customer Sign Up';
@@ -22,7 +31,7 @@ exports.create = (req, res, next) => {
 
 exports.list = (req, res, next) => {
     // empty MongoDB query object returns all documents in the collection
-    Customer.find(
+    CustomerModel.find(
         // Query object - MongoDB Query Object
         {},
         // [Fields] - optional, can specify fields to return separated by a space, can exclude specific fields, prefix with '-'
@@ -39,15 +48,7 @@ exports.list = (req, res, next) => {
             if (err) return next(err);
             req.customerList = customers;
             next();
-            // res.json(customers);
         });
-};
-
-// 'read' controller method to display a customer
-exports.read = (req, res, next) => {
-    // Use the 'response' object to send a JSON response
-    res.json(req.session.customer);
-    next();
 };
 
 // finds a customer their email address
@@ -57,49 +58,20 @@ exports.findCustomerByEmail = (req, res, next) => {
 
     req.session.inputPassword = req.body.password
 
-    Customer.findOneByEmail(email, (err, customer) => {
+    CustomerModel.findOneByEmail(email, (err, customer) => {
         if (err) return next(err);
         // save the found customer in session state because everything going forward (prior to logging out) will be using this customer document
         req.session.customer = customer;
-        console.log('in customer controller')
-        console.log('session customer is: ' + req.session.customer);
-        // console.log('customersbyemail!')
-        // console.log('email: ' + req.session.customer.email);
-        // console.log('user entered password: ' + req.inputpassword);
         next();
     });
 };
 
-// exports.addFeedback = (req, res, next) => {
-//     let feedback = {
-//         comments: req.body.comments
-//     };
-
-//     console.log('body feedback is: ' + req.body.comments);
-
-//     console.log('feedback obj: ' + feedback);
-
-//     console.log('feedback.comments: ' + feedback.comments);
-// }
-
-// exports.addFeedback
-
 exports.authenticateCustomer = function (req, res, next) {
-    // if (req.session.customer) {
     req.email = req.session.customer.email
     req.password = req.session.customer.password
 
-    console.log('authenticatecustomer')
-    console.log('found customer email: ' + req.email);
-    console.log('found customer password: ' + req.password);
-
-    console.log('user entered password: ' + req.session.inputPassword);
-
     req.actionTitle = 'Login';
     req.actionResultsContent = 'Incorrect credentials entered.\n\nPlease try again!';
-
-    // res.send(req)
-    // console.log('password: ' + req.password);
 
     if (req.session.customer.authenticate(req.session.inputPassword)) {
         console.log('authenticated');
@@ -110,14 +82,12 @@ exports.authenticateCustomer = function (req, res, next) {
         req.actionResult = 'Failed to Authenticate'
         console.log('failed to authenticate!');
         next()
-        // res.send('unauthorized!');
-        // display fail to login page
     }
-    // }
 };
 
+// NOT CURRENTLY USED - will be used in later iterations ------------------------------
 exports.update = (req, res, next) => {
-    Customer.findOneAndUpdate(
+    CustomerModel.findOneAndUpdate(
         {
             email: req.session.customer.email,
         },

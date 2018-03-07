@@ -1,3 +1,12 @@
+/**
+ * 
+ * @file        mongoose.js
+ * @description this file configures mongoose and registers our different models
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
 const config = require("./config");
 const mongoose = require("mongoose");
 
@@ -6,8 +15,6 @@ module.exports = () => {
 
     // register the Customer model
     require('../app/models/customer.server.model');
-    // register the Feedback model
-    // require('../app/models/feedback.server.model');
 
     return db;
 }

@@ -1,3 +1,12 @@
+/**
+ * 
+ * @file        development.js
+ * @description stores the environment configurations for the development environment
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
 module.exports = {
     // development configuration options
     /**

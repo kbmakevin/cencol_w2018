@@ -1,4 +1,13 @@
 /**
+ * 
+ * @file        index.server.routes.js
+ * @description defines the routes for the login/home component
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
+/**
  * This uses CommonJS module pattern to export a single module function
  * This function takes an express obj as arg
  * Then it requires the index controller and uses its render() method as a middleware to different VERB requests made to specified paths
@@ -7,8 +16,6 @@
 module.exports = (app) => {
     const customers = require('../controllers/customers.server.controller');
     const index = require('../controllers/index.server.controller');
-    // const feedback = require('../controllers/feedback.server.controller');
-    // const thankyou = require('../controllers/thankyou.server.controller');
     const actionresult = require('../controllers/actionresult.server.controller');
 
     /**
@@ -19,30 +26,13 @@ module.exports = (app) => {
     app.route('/')
         .get(index.render)
         .post(
-            // 1. find customer in data store
-            // need redirect with status code of 307 - temporary redirect, because default is 302 - found, changes POST request to GET
-            // (req, res) => {
-            //     // req.password = req.body.password;
-            //     // req.inputemail = req.body.username;
-            //     // req.inputpassword = req.body.password;
-            //     req.session.inputEmail = req.body.username;
-            //     req.session.inputPassword = req.body.password;
-            //     res.redirect('/' + req.body.username);
-            //     // res.redirect(307, '/' + req.body.username);
-            // },
-            // (req,res)
-            // customers.customerByEmail
-            // 2. try to authenticate user
-            // 3. display feedback page and populate all fields but comments
-            // feedback.render
-
             customers.findCustomerByEmail,
             customers.authenticateCustomer,
             actionresult.render,
-        // feedback.render
-
     );
 
+    // POOR DESIGN - remember not  to do this next time :)
+    // ---
     // app.route('/:email')
     //     .get(
     //         // customers.read,

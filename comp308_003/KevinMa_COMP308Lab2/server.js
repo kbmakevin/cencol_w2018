@@ -1,3 +1,12 @@
+/**
+ * 
+ * @file        server.js
+ * @description application manifest
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
 // often, the NODE_ENV environment variable is not properly set
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 

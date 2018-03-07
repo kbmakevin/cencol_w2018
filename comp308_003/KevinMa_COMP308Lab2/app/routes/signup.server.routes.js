@@ -1,3 +1,12 @@
+/**
+ * 
+ * @file        signup.server.routes.js
+ * @description defines the routes for the signup component
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
 module.exports = (app) => {
     const signup = require('../controllers/signup.server.controller');
     const customers = require('../controllers/customers.server.controller');
@@ -6,10 +15,7 @@ module.exports = (app) => {
     app.route('/signup')
         .get(signup.render)
         .post(
-            // signup.validatePassword,
             customers.create,
             actionresult.render
-            // alert('User was successfully created!')
-            // (req, res) => res.redirect('/')
         );
 }

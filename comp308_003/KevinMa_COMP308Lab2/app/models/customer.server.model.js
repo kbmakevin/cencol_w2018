@@ -1,7 +1,14 @@
+/**
+ * 
+ * @file        customer.server.model.js
+ * @description this models the Customer document
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// const Feedbacks = mongoose.model('Feedback');
-// const Feedbacks = require('./feedback.server.model')
 
 let CustomerSchema = new Schema({
     firstName: {
@@ -82,10 +89,6 @@ CustomerSchema.statics.findOneByEmail = function (email, callback) {
 CustomerSchema.methods.authenticate = function (password) {
     return this.password === password;
 }
-
-// CustomerSchema.methods.addFeedback = function (feedback) {
-//     this.feedbacks.push(feedback);
-// }
 
 // Mongoose middleware can intercept process of the: init, validate, save, and remove instance methods
 

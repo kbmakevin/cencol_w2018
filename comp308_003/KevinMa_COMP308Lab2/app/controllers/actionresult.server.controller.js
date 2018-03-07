@@ -1,8 +1,18 @@
+/**
+ * 
+ * @file        actionresult.server.controller.js
+ * @description this component is used to dispaly the results of certain actions:
+ *              -authentication
+ *              -sign up
+ *              -submission of feedback
+ *              -etc.
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
 exports.render = (req, res, next) => {
     if (req.actionResult == 'Authenticated') {
-        // console.log('actionresult is success!')
         res.redirect('/feedback');
-        // next()
     } else if (req.actionResult == 'Submitted') {
         res.redirect('/thankyou');
     } else {

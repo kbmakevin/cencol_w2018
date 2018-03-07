@@ -1,9 +1,17 @@
+/**
+ * 
+ * @file        express.js
+ * @description this file initializes and configures the express application
+ * @author      Kevin Ma
+ * @date        2018.03.06
+ * 
+ */
+
 // load the module dependencies
 const express = require('express');
 const config = require('./config');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
 
 module.exports = () => {
     // create a new express app
@@ -24,9 +32,6 @@ module.exports = () => {
     // use the body-parser middleware functions; it allows us to access request body under the req.body property
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
-    // app.use(bodyParser.urlencoded({
-    //     extended: true
-    // }));
 
     /**
      * app.set(name, value)
@@ -35,12 +40,6 @@ module.exports = () => {
     // set the application view engine and 'views' folder
     app.set('views', './app/views');
     app.set('view engine', 'ejs');
-
-    /**
-     * HTML5 only allows GET and POST in forms, need to use method-override to 
-     * allow PUT and DELETE requests.
-     */
-    // app.use(methodOverride('_method'));
 
     // load the routing files, passing in the express application as an argument
     require('../app/routes/index.server.routes.js')(app);
@@ -52,7 +51,6 @@ module.exports = () => {
     // serving static files
     // NOTE: order matters here, if static files above routes, HTTP req would look in static files folder first before routes; this would make responses a lot slower as it would have to wait for a filesystem I/O operation
     app.use(express.static('public'));
-    // app.use(express.static('./public'));
 
     // return the express application instance
     return app;
