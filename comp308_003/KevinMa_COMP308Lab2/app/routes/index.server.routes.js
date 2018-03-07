@@ -7,7 +7,9 @@
 module.exports = (app) => {
     const customers = require('../controllers/customers.server.controller');
     const index = require('../controllers/index.server.controller');
-    const feedback = require('../controllers/feedback.server.controller');
+    // const feedback = require('../controllers/feedback.server.controller');
+    // const thankyou = require('../controllers/thankyou.server.controller');
+    const actionresult = require('../controllers/actionresult.server.controller');
 
     /**
      * app.route(path).VERB([callback...], callback)
@@ -19,24 +21,69 @@ module.exports = (app) => {
         .post(
             // 1. find customer in data store
             // need redirect with status code of 307 - temporary redirect, because default is 302 - found, changes POST request to GET
-            (req, res) => {
-                // req.password = req.body.password;
-                res.redirect(307, '/' + req.body.username);
-            },
-        // (req,res)
-        // customers.customerByEmail
-        // 2. try to authenticate user
-        // 3. display feedback page and populate all fields but comments
+            // (req, res) => {
+            //     // req.password = req.body.password;
+            //     // req.inputemail = req.body.username;
+            //     // req.inputpassword = req.body.password;
+            //     req.session.inputEmail = req.body.username;
+            //     req.session.inputPassword = req.body.password;
+            //     res.redirect('/' + req.body.username);
+            //     // res.redirect(307, '/' + req.body.username);
+            // },
+            // (req,res)
+            // customers.customerByEmail
+            // 2. try to authenticate user
+            // 3. display feedback page and populate all fields but comments
+            // feedback.render
+
+            customers.findCustomerByEmail,
+            customers.authenticateCustomer,
+            actionresult.render,
         // feedback.render
+
     );
 
-    app.route('/:email')
-        .post(
-            // customers.read,
-            // customers.authenticateCustomer,
-            feedback.render
-        );
+    // app.route('/:email')
+    //     .get(
+    //         // customers.read,
+    //         // (req, res, next) => {
+    //         //     // console.log('inindex route')
+    //         //     // console.log('found customer email: ' + req.email);
+    //         //     // console.log('found customer password: ' + req.password);
 
-    // define a middleware to be executed before any other middleware that uses the parameter
-    app.param('email', customers.customerByEmail);
+    //         //     // console.log('user entered password: ' + req.session.inputPassword);
+    //         //     // next()
+    //         // },
+    //         customers.authenticateCustomer,
+    //         actionresult.render,
+
+    //         // (req, res, next) => {
+    //         //     console.log('in this method')
+    //         //     console.log('req.actionResult is: ' + req.actionResult)
+    //         //     actionresult.render
+
+    //         //     // if (req.actionResult == 'Success') {
+    //         //     //     console.log('going to render feedback now')
+    //         //     //     next()
+    //         //     // }
+    //         //     // else {
+    //         //     //     console.log('going to render actionresult now')
+    //         //     //     actionresult.render
+    //         //     // }
+    //         // },
+    //         feedback.render
+    //     )
+    //     .post(
+    //         feedback.create,
+    //         // (req, res, next) => {
+    //         //     if (req.actionResult == 'Success') {
+    //         //         next()
+    //         //     }
+    //         //     actionresult.render
+    //         // },
+    //         thankyou.render
+    //     );
+
+    // // define a middleware to be executed before any other middleware that uses the parameter
+    // app.param('email', customers.customerByEmail);
 }

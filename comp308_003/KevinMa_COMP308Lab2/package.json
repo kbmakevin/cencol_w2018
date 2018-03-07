@@ -21,6 +21,7 @@
     "ejs": "^2.5.2",
     "express": "^4.16.2",
     "express-session": "^1.14.1",
-    "mongoose": "^5.0.8"
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.9"
   }
 }

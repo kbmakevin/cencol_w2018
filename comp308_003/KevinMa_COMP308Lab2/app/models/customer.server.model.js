@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// const Feedbacks = mongoose.model('Feedback');
+// const Feedbacks = require('./feedback.server.model')
 
 let CustomerSchema = new Schema({
     firstName: {
@@ -49,7 +51,21 @@ let CustomerSchema = new Schema({
     registered: {
         type: Date,
         default: Date.now
-    }
+    },
+
+    feedbacks: [
+        {
+            comments: {
+                type: String,
+                required: true,
+                trim: true,
+            },
+            created: {
+                type: Date,
+                default: Date.now
+            }
+        }
+    ]
 },
     {
         versionKey: false

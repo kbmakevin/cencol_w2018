@@ -1,13 +1,13 @@
 <% include ./partials/header %>
 
-    <div class="row">
-        <div class="col">
+    <div class="row border" style="background-color:#f7f7f7;">
+        <div class="col border-right">
             <h4>Customer Name</h4>
         </div>
-        <div class="col">
+        <div class="col border-right">
             <h4>Customer Email</h4>
         </div>
-        <div class="col">
+        <div class="col border-right">
             <h4>Customer Feedback</h4>
         </div>
         <div class="col">
@@ -17,22 +17,22 @@
 
     <% for(var i=0; i < customers.length; i++) { %>
         <div class="row">
-            <div class="col">
+            <div class="col border-right border-left border-bottom">
                 <p>
                     <%= customers[i].fullName %>
                 </p>
             </div>
-            <div class="col">
+            <div class="col border-right border-bottom">
                 <p>
                     <%= customers[i].email %>
                 </p>
             </div>
-            <div class="col">
+            <div class="col border-right border-bottom">
                 <p>
                     <!-- <%= customers[i].email %> -->
                 </p>
             </div>
-            <div class="col">
+            <div class="col border-right border-bottom">
                 <p>
                     <!-- <%= customers[i].email %> -->
                 </p>

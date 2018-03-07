@@ -46,39 +46,65 @@ exports.list = (req, res, next) => {
 // 'read' controller method to display a customer
 exports.read = (req, res, next) => {
     // Use the 'response' object to send a JSON response
-    res.json(req.customer);
+    res.json(req.session.customer);
     next();
 };
 
 // finds a customer their email address
-exports.customerByEmail = (req, res, next, email) => {
+exports.findCustomerByEmail = (req, res, next) => {
 
-    // console.log('customersbyemail!')
-    // console.log('email: ' + req.customer);
-    // console.log('password: ' + req.password);
+    let email = req.body.username
+
+    req.session.inputPassword = req.body.password
 
     Customer.findOneByEmail(email, (err, customer) => {
         if (err) return next(err);
-        req.customer = customer;
+        req.session.customer = customer;
+        console.log('in customer controller')
+        console.log('session customer is: ' + req.session.customer);
+        // console.log('customersbyemail!')
+        // console.log('email: ' + req.session.customer.email);
+        // console.log('user entered password: ' + req.inputpassword);
         next();
     });
 };
 
-// exports.authenticateCustomer = function (req, res, next) {
-//     console.log('authenticatecustomer')
-//     console.log('email: ' + req.customer);
-//     console.log('password: ' + req.password);
+exports.authenticateCustomer = function (req, res, next) {
+    if (req.session.customer) {
+        req.email = req.session.customer.email
+        req.password = req.session.customer.password
 
-//     if (req.customer.authenticate(req.password))
-//         console.log('authenticated');
-//     else
-//         console.log('unauthorized!');
-// };
+        console.log('authenticatecustomer')
+        console.log('found customer email: ' + req.email);
+        console.log('found customer password: ' + req.password);
+
+        console.log('user entered password: ' + req.session.inputPassword);
+
+        req.actionTitle = 'Login';
+        req.actionResultsContent = 'Incorrect credentials entered.\n\nPlease try again!';
+
+        // res.send(req)
+        // console.log('password: ' + req.password);
+
+        if (req.session.customer.authenticate(req.session.inputPassword)) {
+            console.log('authenticated');
+            req.actionResult = 'Authenticated'
+            next()
+        }
+        else {
+            req.actionResult = 'Failed to Authenticate'
+            console.log('failed to authenticate!');
+            next()
+            // res.send('unauthorized!');
+            // display fail to login page
+        }
+    }
+};
 
 exports.update = (req, res, next) => {
     Customer.findOneAndUpdate(
         {
-            email: req.customer.email,
+            email: req.session.customer.email,
         },
         req.body,
         // {
@@ -96,8 +122,8 @@ exports.update = (req, res, next) => {
 };
 
 exports.delete = (req, res, next) => {
-    req.customer.remove(err => {
+    req.session.customer.remove(err => {
         if (err) return next(err);
-        res.json(req.customer);
+        res.json(req.session.customer);
     })
 };

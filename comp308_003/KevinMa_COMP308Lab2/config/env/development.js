@@ -18,5 +18,7 @@ module.exports = {
      * 
      * but since local instance, can omit authorization
      */
-    db: 'mongodb://localhost/mean-book'
+    // for offline use because windows cannot resolve localhost when wifi interface is off
+    db: 'mongodb://127.0.0.1/comp308-w2018'
+    // db: 'mongodb://localhost/comp308-w2018'
 };
