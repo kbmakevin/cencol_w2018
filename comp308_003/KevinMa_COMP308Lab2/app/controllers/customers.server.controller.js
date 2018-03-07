@@ -59,6 +59,7 @@ exports.findCustomerByEmail = (req, res, next) => {
 
     Customer.findOneByEmail(email, (err, customer) => {
         if (err) return next(err);
+        // save the found customer in session state because everything going forward (prior to logging out) will be using this customer document
         req.session.customer = customer;
         console.log('in customer controller')
         console.log('session customer is: ' + req.session.customer);
@@ -69,36 +70,50 @@ exports.findCustomerByEmail = (req, res, next) => {
     });
 };
 
+// exports.addFeedback = (req, res, next) => {
+//     let feedback = {
+//         comments: req.body.comments
+//     };
+
+//     console.log('body feedback is: ' + req.body.comments);
+
+//     console.log('feedback obj: ' + feedback);
+
+//     console.log('feedback.comments: ' + feedback.comments);
+// }
+
+// exports.addFeedback
+
 exports.authenticateCustomer = function (req, res, next) {
-    if (req.session.customer) {
-        req.email = req.session.customer.email
-        req.password = req.session.customer.password
+    // if (req.session.customer) {
+    req.email = req.session.customer.email
+    req.password = req.session.customer.password
 
-        console.log('authenticatecustomer')
-        console.log('found customer email: ' + req.email);
-        console.log('found customer password: ' + req.password);
+    console.log('authenticatecustomer')
+    console.log('found customer email: ' + req.email);
+    console.log('found customer password: ' + req.password);
 
-        console.log('user entered password: ' + req.session.inputPassword);
+    console.log('user entered password: ' + req.session.inputPassword);
 
-        req.actionTitle = 'Login';
-        req.actionResultsContent = 'Incorrect credentials entered.\n\nPlease try again!';
+    req.actionTitle = 'Login';
+    req.actionResultsContent = 'Incorrect credentials entered.\n\nPlease try again!';
 
-        // res.send(req)
-        // console.log('password: ' + req.password);
+    // res.send(req)
+    // console.log('password: ' + req.password);
 
-        if (req.session.customer.authenticate(req.session.inputPassword)) {
-            console.log('authenticated');
-            req.actionResult = 'Authenticated'
-            next()
-        }
-        else {
-            req.actionResult = 'Failed to Authenticate'
-            console.log('failed to authenticate!');
-            next()
-            // res.send('unauthorized!');
-            // display fail to login page
-        }
+    if (req.session.customer.authenticate(req.session.inputPassword)) {
+        console.log('authenticated');
+        req.actionResult = 'Authenticated'
+        next()
     }
+    else {
+        req.actionResult = 'Failed to Authenticate'
+        console.log('failed to authenticate!');
+        next()
+        // res.send('unauthorized!');
+        // display fail to login page
+    }
+    // }
 };
 
 exports.update = (req, res, next) => {

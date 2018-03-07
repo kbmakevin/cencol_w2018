@@ -7,7 +7,7 @@ module.exports = () => {
     // register the Customer model
     require('../app/models/customer.server.model');
     // register the Feedback model
-    require('../app/models/feedback.server.model');
+    // require('../app/models/feedback.server.model');
 
     return db;
 }

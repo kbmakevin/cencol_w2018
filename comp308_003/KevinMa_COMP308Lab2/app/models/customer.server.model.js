@@ -57,7 +57,6 @@ let CustomerSchema = new Schema({
         {
             comments: {
                 type: String,
-                required: true,
                 trim: true,
             },
             created: {
@@ -84,24 +83,28 @@ CustomerSchema.methods.authenticate = function (password) {
     return this.password === password;
 }
 
+// CustomerSchema.methods.addFeedback = function (feedback) {
+//     this.feedbacks.push(feedback);
+// }
+
 // Mongoose middleware can intercept process of the: init, validate, save, and remove instance methods
 
-// Pre-Middleware
-CustomerSchema.pre('save', function (next) {
-    // things to do before saving document e.g. complex validation here...
-    this.wasNew = this.isNew;
-    next();
-});
+// // Pre-Middleware
+// CustomerSchema.pre('save', function (next) {
+//     // things to do before saving document e.g. complex validation here...
+//     this.wasNew = this.isNew;
+//     next();
+// });
 
-// Post-Middleware
-CustomerSchema.post('save', function (next) {
-    // perfect for logging application logic
-    if (this.wasNew) {
-        console.log('A new user was created: ' + this.email);
-    } else {
-        console.log(this.email + ' has updated its details');
-    }
-});
+// // Post-Middleware
+// CustomerSchema.post('save', function (next) {
+//     // perfect for logging application logic
+//     if (this.wasNew) {
+//         console.log('A new user was created: ' + this.email);
+//     } else {
+//         console.log(this.email + ' has updated its details');
+//     }
+// });
 
 // Configure Schema to include virtual attributes and getter methods when converting the MongoDB document to a JSON representation, and will allow the output of documents using res.json() to include the getter's behavior
 CustomerSchema.set('toJSON', { virtuals: true, getters: true });
