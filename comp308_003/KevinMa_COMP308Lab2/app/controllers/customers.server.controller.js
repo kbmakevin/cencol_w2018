@@ -3,14 +3,16 @@
  * @file        customers.server.controller.js
  * @description this component is used to handle application logic for Customer Model
  * @author      Kevin Ma
- * @date        2018.03.06
+ * @date        2018.03.07
  * 
  */
 
-const CustomerModel = require('mongoose').model('Customer');
+// 2018.03.07 - 19:10:28 - simplifying customer model
+let customerModel = require('../models/customer.server.model');
 
 exports.create = (req, res, next) => {
-    let customer = new CustomerModel(req.body);
+    // 2018.03.07 - 19:08:01 - simplifying customer model
+    let customer = customerModel(req.body);
 
     customer.save(function (err) {
         req.actionTitle = 'Customer Sign Up';
@@ -40,7 +42,7 @@ exports.list = (req, res, next) => {
     }
 
     // empty MongoDB query object returns all documents in the collection
-    CustomerModel.find(
+    customerModel.find(
         // Query object - MongoDB Query Object
         queryObj,
         // {},
@@ -68,7 +70,7 @@ exports.findCustomerByEmail = (req, res, next) => {
 
     req.session.inputPassword = req.body.password
 
-    CustomerModel.findOneByEmail(email, (err, customer) => {
+    customerModel.findOneByEmail(email, (err, customer) => {
         if (err) {
             req.session.customer = null;
             next()
@@ -108,7 +110,7 @@ exports.authenticateCustomer = function (req, res, next) {
 
 // NOT CURRENTLY USED - will be used in later iterations ------------------------------
 exports.update = (req, res, next) => {
-    CustomerModel.findOneAndUpdate(
+    customerModel.findOneAndUpdate(
         {
             email: req.session.customer.email,
         },

@@ -3,32 +3,26 @@
  * @file        viewcustomerfeedback.server.routes.js
  * @description defines the routes for the viewcustomerfeedback component
  * @author      Kevin Ma
- * @date        2018.03.06
+ * @date        2018.03.07
  * 
  */
 
-module.exports = (app) => {
-    const customers = require('../controllers/customers.server.controller');
-    const viewcustomerfeedback = require('../controllers/viewcustomerfeedback.server.controller');
+// 2018.03.07 - 18:26:30
+let router = require('express').Router();
 
-    app.route('/viewcustomerfeedback')
-        .get(
-            // customers.list,
-            viewcustomerfeedback.render
-        )
-        .post(
-            customers.list,
-            viewcustomerfeedback.render
-        )
 
-    // POOR DESIGN - remember not  to do this next time :)
-    // ---
-    // // in express, adding a colon before a substring in a route definition means that this substring will be handled as a request parameter
-    // app.route('/viewcustomerfeedback/:email')
-    //     .get(customers.read)
-    //     .put(customers.update)
-    //     .delete(customers.delete);
+let customers = require('../controllers/customers.server.controller');
+let viewcustomerfeedback = require('../controllers/viewcustomerfeedback.server.controller');
 
-    // // define a middleware to be executed before any other middleware that uses the parameter
-    // app.param('email', customers.customerByEmail);
-};
+router.route('/')
+    .get(
+        // customers.list,
+        viewcustomerfeedback.render
+    )
+    .post(
+        customers.list,
+        viewcustomerfeedback.render
+    )
+
+// 2018.03.07 - 18:26:35
+module.exports = router;

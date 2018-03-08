@@ -3,7 +3,7 @@
     @file        header.ejs
     @description header partial view...
     @author      Kevin Ma
-    @date        2018.03.06
+    @date        2018.03.07
 
   -->
 
@@ -18,23 +18,47 @@
     <title>
         <%= title %>
     </title>
-    <link rel="icon" href="img/favicon.png" type="image/x-icon" />
+
     <!-- CSS Section -->
-    <!-- boostrap cdn -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
-    <!-- font awesome cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- 2018.03.07 - 18:40:13: Removed CDN, using npm loaded modules instead -->
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 
 <body style="background-color: #d4df38">
 
+    <!-- 2018.03.07 - 18:54:43 added navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Centennial College</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item <% if(title == 'Login') { %> active <% } %>">
+                    <a class="nav-link" href="/">
+                        <i class="fa fa-lg fa-sign-in"></i> Login</a>
+                </li>
+
+                <li class="nav-item <% if(title == 'View Customer Feedback') { %> active <% } %>">
+                    <a class="nav-link" href="/viewcustomerfeedback">
+                        <i class="fa fa-lg fa-eye"></i> View Customer Feedback</a>
+                </li>
+
+                <li class="nav-item <% if(title == 'Sign Up') { %> active <% } %>">
+                    <a class="nav-link" href="/signup">
+                        <i class="fa fa-lg fa-user-plus"></i> Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <!-- <h1>
-            <%= title %>
-        </h1> -->
         <div class="card text-center">
-            <!-- this works because in config/express.js we are serving static files from ./public/ -->
+            <!-- this works because in config/express.js we are serving static files from public/ -->
             <img src="img/cencol_banner.jpeg" alt="Banner of Centennial College" class="card-img-top">
             <div class="card-body">
                 <p class="card-text">

@@ -3,18 +3,21 @@
  * @file        mongoose.js
  * @description this file configures mongoose and registers our different models
  * @author      Kevin Ma
- * @date        2018.03.06
+ * @date        2018.03.07
  * 
  */
 
-const config = require("./config");
-const mongoose = require("mongoose");
+let config = require("./config");
+let mongoose = require("mongoose");
 
-module.exports = () => {
-    let db = mongoose.connect(config.db);
+// 2018.03.07 - 18:12:22
+mongoose.connect(config.db);
 
-    // register the Customer model
-    require('../app/models/customer.server.model');
+// 2018.03.07 - 18:12:28
+let mongoDB = mongoose.connection;
+mongoDB.on('error', console.error.bind(console, 'connection error:'));
+mongoDB.once('open', () => {
+    console.log('Connected to MongoDB...');
+});
 
-    return db;
-}
+module.exports = mongoDB;

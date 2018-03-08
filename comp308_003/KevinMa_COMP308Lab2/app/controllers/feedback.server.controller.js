@@ -3,15 +3,16 @@
  * @file        feedback.server.controller.js
  * @description this component is used to handle application logic for Feedback component
  * @author      Kevin Ma
- * @date        2018.03.06
+ * @date        2018.03.07
  * 
  */
 
-const CustomerModel = require('mongoose').model('Customer');
+// 2018.03.07 - 19:10:28 - simplifying customer model
+let customerModel = require('../models/customer.server.model');
 
 exports.create = function (req, res, next) {
 
-    CustomerModel.findOneByEmail(req.session.customer.email, (err, customer) => {
+    customerModel.findOneByEmail(req.session.customer.email, (err, customer) => {
         // can't be error...if reached this part of code, the user must've been found.
         // if(err){ }
         req.session.comments = req.body.comments;

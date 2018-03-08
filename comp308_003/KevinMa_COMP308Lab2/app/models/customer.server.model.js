@@ -3,14 +3,13 @@
  * @file        customer.server.model.js
  * @description this models the Customer document
  * @author      Kevin Ma
- * @date        2018.03.06
+ * @date        2018.03.07
  * 
  */
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-let CustomerSchema = new Schema({
+let mongoose = require('mongoose');
+// 2018.03.07 - 19:02:29 - simplify customer model
+let customerSchema = mongoose.Schema({
     firstName: {
         type: String,
         required: true,
@@ -72,44 +71,23 @@ let CustomerSchema = new Schema({
             }
         }
     ]
-},
-    {
-        versionKey: false
-    });
+})
 
 // Virtual Attributes
-CustomerSchema.virtual('fullName').get(function () { return this.firstName + " " + this.lastName; });
+customerSchema.virtual('fullName').get(function () { return this.firstName + " " + this.lastName; });
 
 // Static Methods
-CustomerSchema.statics.findOneByEmail = function (email, callback) {
+customerSchema.statics.findOneByEmail = function (email, callback) {
     this.findOne({ email: new RegExp(email, 'i') }, callback);
 }
 
 // Instance Methods
-CustomerSchema.methods.authenticate = function (password) {
+customerSchema.methods.authenticate = function (password) {
     return this.password === password;
 }
 
-// Mongoose middleware can intercept process of the: init, validate, save, and remove instance methods
-
-// // Pre-Middleware
-// CustomerSchema.pre('save', function (next) {
-//     // things to do before saving document e.g. complex validation here...
-//     this.wasNew = this.isNew;
-//     next();
-// });
-
-// // Post-Middleware
-// CustomerSchema.post('save', function (next) {
-//     // perfect for logging application logic
-//     if (this.wasNew) {
-//         console.log('A new user was created: ' + this.email);
-//     } else {
-//         console.log(this.email + ' has updated its details');
-//     }
-// });
-
 // Configure Schema to include virtual attributes and getter methods when converting the MongoDB document to a JSON representation, and will allow the output of documents using res.json() to include the getter's behavior
-CustomerSchema.set('toJSON', { virtuals: true, getters: true });
+customerSchema.set('toJSON', { virtuals: true, getters: true });
 
-mongoose.model('Customer', CustomerSchema);
+// 2018.03.07 - 19:04:57 - simplifying customer model
+module.exports = mongoose.model('customers', customerSchema);
