@@ -11,6 +11,8 @@ function init() {
 
         // feb 08 - declare the new variable(s) that u will need today
         let ambientLight, pointLight, directionalLight;
+
+        // let tetraMesh;
     }
 
     stats = initStats()
@@ -47,6 +49,10 @@ function init() {
         this.triangle_sx = 1;
         this.triangle_sy = 1;
         this.triangle_sz = 1;
+
+        // feb 22 - tetrahedron control(s)
+        this.tetrahedronVisible = true;
+        this.buildingsVisible = true; // need to use the name property
     };
 
     // dat.GUI instantiation + wiring up of dat.GUI controls
@@ -60,7 +66,17 @@ function init() {
         gui.add(controls, 'dx', 0, 5);
         gui.add(controls, 'dy', 0, 15);
         gui.add(controls, 'dz', 0, 5);
-        gui.add(controls, 'numberOfBuildings', 0, 2000);
+
+        // feb 22 - buildings controls
+        let buildingsFolder = gui.addFolder('Building Controls');
+        buildingsFolder.add(controls, 'numberOfBuildings', 0, 2000);
+        buildingsFolder.add(controls, 'buildingsVisible').onChange(visible => {
+            scene.traverse(obj => {
+                if (obj.name.startsWith("Building"))
+                    obj.visible = visible;
+            })
+        });
+        // gui.add(controls, 'numberOfBuildings', 0, 2000);
 
         // feb 08 - use the new controls
         // gui.add(controls, 'ambientLightColor'); //first try
@@ -88,6 +104,10 @@ function init() {
         triangleFolder.add(controls, 'triangle_pz', -10, 10).onChange(pz => triangleMesh.position.z = pz);
         triangleFolder.add(controls, 'triangle_sx', 0, 10).onChange(sx => triangleMesh.scale.x = sx);
         triangleFolder.add(controls, 'triangle_sz', 0, 10).onChange(sz => triangleMesh.scale.z = sz);
+
+        // feb 22 - tetrahedron controls
+        let tetrahedronFolder = gui.addFolder('Tetrahedron Controls');
+        tetrahedronFolder.add(controls, 'tetrahedronVisible').onChange(visible => tetraMesh.visible = visible);
     }
 
     // scene + camera + renderer + axis helper
@@ -166,13 +186,13 @@ function init() {
             scene.add(ambientLight);
         }
 
-        // add a spotlight2
+        // add a pointlight
         {
-            let spotlight2 = new THREE.SpotLight(0xFFFFFF)
-            spotlight2.position.set(-10, 30, -10) //Feb05 - used controls
-            spotlight2.castShadow = true;
-            spotlight2.lookAt(red_cube);
-            scene.add(spotlight2)
+            pointLight = new THREE.PointLight(0xFFFFFF)
+            pointLight.position.set(-10, 30, -10) //Feb05 - used controls
+            pointLight.castShadow = true;
+            pointLight.lookAt(red_cube);
+            scene.add(pointLight)
         }
     }
 
@@ -220,10 +240,10 @@ function init() {
             new THREE.Vector3(0, 1, 0), //V_3 (index3)
         ];
         let tetraFaces = [
-            new THREE.Face3(0, 1, 2),
-            new THREE.Face3(0, 3, 1),
-            new THREE.Face3(0, 2, 3),
-            new THREE.Face3(1, 2, 3),
+            new THREE.Face3(0, 1, 2), // F_0 - swap indexes, only one side of the face can be seen (normal to the camera/light?)
+            new THREE.Face3(1, 2, 3), // F_1
+            new THREE.Face3(0, 3, 2), // F_2
+            new THREE.Face3(0, 1, 3), // F_3
             // new THREE.Face3(1, 3, 2),
             // new THREE.Face3(0, 3, 2),
         ];
@@ -232,12 +252,21 @@ function init() {
         tetraGeo.faces = tetraFaces;
         tetraGeo.computeFaceNormals();
 
-        let tetraMat = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff, wireframe: true });
-        let tetraMesh = new THREE.Mesh(tetraGeo, tetraMat);
+        let tetraMat = new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff, wireframe: false });
+        tetraMesh = new THREE.Mesh(tetraGeo, tetraMat);
         tetraMesh.position = new THREE.Vector3(20, 0, 20);
-        tetraMesh.scale.set(10, 10, 10);
+        tetraMesh.scale.set(15, 15, 15);
 
         scene.add(tetraMesh);
+
+        // HOMEWORK: create real tetrahedron - leave vertices + faces same, just coordinates change 
+        // also need add controls for positions, scales, etc.
+
+        let tetrahedron = new THREE.TetrahedronGeometry(12, 0);
+        let bigmesh = new THREE.Mesh(tetrahedron, tetraMat);
+        bigmesh.scale.set(2, 2, 2);
+        bigmesh.position.set(0, 10, 0);
+        // scene.add(bigmesh);
 
         // -----------------------------------------------------------------------
         // task 3 create a face => a cube head + tetrahedron nose that rotates
@@ -368,6 +397,7 @@ function init() {
             // let rz = Math.random() * Deg2Rad(45)
 
             let box = createBox(w, h, d, generateRandomColor(), generateWireFrame(), px, py, pz)
+            box.name = "Building" + index;
             scene.add(box)
         }
     }
@@ -381,9 +411,10 @@ function init() {
         let y = spotlight.position.y;
         let z = spotlight.position.z;
 
-        spotlight.position.set(x * Math.sin(t) - 10, 40, z * Math.cos(t) - 10);
+        // spotlight.position.set(x * Math.sin(t) - 10, 40, z * Math.cos(t) - 10);
         // scene.rotation.set(t, 0, 0);
-        scene.rotation.set(0, t, 0);
+        // scene.rotation.set(0, t, 0);
+        tetraMesh.rotation.y = t;
 
         scene.remove(red_cube);
         red_cube = createBox(controls.dx, controls.dy, controls.dz, 0xFF0000, false, 0, 0, 0);
