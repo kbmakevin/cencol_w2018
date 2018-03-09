@@ -46,6 +46,7 @@ function init() {
          * - a squash racket (or two): box for the tail , sphere for the oval area, scaled appropiately; positioned on the floor.
          * - a black squash ball: a sphere sized appropiately; positioned beside the racket(s)
          */
+        let frontWall;
     }
 
     stats = initStats()
@@ -70,6 +71,9 @@ function init() {
 
         // ambient light controls
         this.ambientLightColor = "#0c0c0c";
+
+        // front wall opacity
+        this.frontWallOpacity = 0.2;
 
     };
 
@@ -99,6 +103,9 @@ function init() {
         let ambientLightFolder = gui.addFolder('Ambient Light Controls');
         ambientLightFolder.addColor(controls, 'ambientLightColor').onChange(c => ambientLight.color = new THREE.Color(c));
 
+        // front wall controls
+        let frontWallFolder = gui.addFolder('Front Wall Controls');
+        frontWallFolder.add(controls, 'frontWallOpacity', 0, 1).onChange(o => frontWall.material.opacity = o);
     }
 
     // setting up scene + camera + axis helper
@@ -131,6 +138,13 @@ function init() {
 
             floor = createBox(50, 50, 1, 0xc7a777, 0, -25, 25, 1, 1, 1, degreeToRadians(90), 0, 0);
             scene.add(floor);
+
+            // fourth transparent wall that the camera can peak through
+            frontWall = createBox(50, 50, 1, 0xe7e7e7, 0, 0, 50, 1, 1, 1, 0, 0, 0);
+            frontWall.material.transparent = true;
+            frontWall.material.opacity = controls.frontWallOpacity;
+            scene.add(frontWall);
+
         }
 
         // creating the two lamps (2 spheres scaled appropiately + 2 point lights)
@@ -257,7 +271,8 @@ function init() {
         sz = 1,
         rx = 0,
         ry = 0,
-        rz = 0) {
+        rz = 0
+    ) {
         // create a box
         let boxGeometry = new THREE.BoxGeometry(w, h, d)
         let boxMaterial = new THREE.MeshLambertMaterial()
