@@ -136,4 +136,13 @@ complexity
 
 - https://doublehorn.com/saas-paas-and-iaas-understanding/
 
+---
+
+# Week5
+- over reading week play around with netsuite
+- identify bottle neck in a business e.g. when shopping, queueing up to pay is bottleneck
+
+---
+
+# Week6
 - 
