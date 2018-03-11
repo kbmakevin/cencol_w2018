@@ -145,4 +145,15 @@ complexity
 ---
 
 # Week6
+- business process, process maps
+
+## Test Review
+- test on slides, not book
+- 10 mcq
+- 10 tf
+- 5 short ans
+- includes the cloud computing slides, not just textbook slides
+    - review all ppt slides on ecentennial
+    - eai slides
+        - 80% of jobs are in here, bc not everyone can afford erp
 - 
