@@ -1,4 +1,22 @@
 # Week1
+# Chapter 1: Introduction to MEAN
+
+- MongoDB 
+    - database
+- Express
+    - web server framework
+- AngularJS
+    - web client framework
+- Node.js
+    - server platform
+
+- **strength** of the stack
+    - centralization of JavaScript as main prog language
+
+- problem
+    - connecting these tools together, scaling and architetcture issues
+    - affect dvelopment process
+
 Module pattern
 ---
 In software engineering, the module pattern is a design pattern used to implement the concept of software modules, defined by modular programming, in a programming language with incomplete direct support for the concept.
@@ -572,4 +590,73 @@ db.posts.find({ user:{$in: ['alice','bob']} });
 - is an ODM, **Object Document Mapper**
     - allows us to connect to a db and CRUD
     - for Java and C#, we had ORM, Object Relational Mapper
-    - 
+
+---
+
+# Week5
+- REST API differs from other APIs because it lets us use HTTP protocol
+- POST, GET, PUT, DELETE => CRUD
+- dynamic field names are created by 
+- `UserSchema.virtual('fullName').get(function() {`
+- two approaches to do referencing in mongodb
+    - dbref
+    - embedded document approach
+- TOM starts here
+- if we dont cover everything, refer to lesson 5 and 6 of w2017 from tom's YT playlist for comp308
+    - https://www.youtube.com/watch?v=WoeCISvyc0A&list=PL5svY1bZDBZr0mzfldKz2ERqPDY9pqAH_&index=47
+```
+use <dbName>;
+db.<collectionsName>.insert({ properties:values...});
+db.<collection>.find().pretty();
+db.games.update({name:"PUBG"},{name:"PUBG", rating: 3})
+db.games.update({name:"PUBG"},{$set:{rating: 30}})
+```
+More reference
+- https://docs.mongodb.com/manual/crud/
+
+NOTE: Need to return the entire object when updating
+- db.games.update({name:"PUBG"},{name:"PUBG", rating: 3})
+    - not just the field to be updated
+    - this would replace EVERY document who has name:"PUBG"
+- OR, use $set flag
+    - `db.games.update({name:"PUBG"},{$set:{rating: 30}})`
+- If we do not use set flag, we are **REPLACING** the object
+
+- given this route
+- `app.get('/hi/:param1', function(req,res){} );`
+- given this URL
+- `http://www.google.com/hi/there?qs1=you&qs2=tube`
+- req.**query**
+```
+{
+  qs1: 'you',
+  qs2: 'tube'
+}
+```
+- req.**params**
+```
+{
+  param1: 'there'
+}
+```
+
+---
+
+# Week6
+## User Authentication
+- passport module
+
+### Passport Authentication Steps
+1. Install passport module
+2. Configure passport module in configfolder
+3. Register passport module in express.jsfile
+4. Install authentication strategies modules
+5. Configure authentication strategies in separate files in strategies subfolder of configfolder
+6. Authenticated user must be serializedto the session
+7. Serialized user should be deserializedwhen requests are made
+
+- in options arguments, when retrieving fields from document, omit -password and -salt, dont want to read these into memory as they can be intercepted by hackers
+- salt is random number used to hash the password
+
+- The **flash** is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user. The flash is typically used in combination with redirects, ensuring that the message is available to the next page that is to be rendered.
+

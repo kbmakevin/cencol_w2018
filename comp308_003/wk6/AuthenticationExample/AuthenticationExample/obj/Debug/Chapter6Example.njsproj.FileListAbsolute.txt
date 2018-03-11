@@ -1,0 +1,2 @@
+C:\Classes\COMP308\Examples\2018\Week6\Chapter6Example\Chapter6Example\obj\Debug\Chapter6Example.njsproj.CoreCompileInputs.cache
+C:\Classes\COMP308\Examples\2018\Week6\Chapter6Example\Chapter6Example\bin\Microsoft.NodejsTools.WebRole.dll
