@@ -660,3 +660,18 @@ NOTE: Need to return the entire object when updating
 
 - The **flash** is a special area of the session used for storing messages. Messages are written to the flash and cleared after being displayed to the user. The flash is typically used in combination with redirects, ensuring that the message is available to the next page that is to be rendered.
 
+---
+
+# Week7
+## AngularJS
+- interpolation binding
+- property binding
+- event binding
+- two-way binding [(banana in a box)]
+    ```
+    You often want to both display a data property and update that property when the user makes changes.
+
+    On the element side that takes a combination of setting a specific element property and listening for an element change event.
+
+    Angular offers a special two-way data binding syntax for this purpose, [(x)]. The [(x)] syntax combines the brackets of property binding, [x], with the parentheses of event binding, (x).
+    ```

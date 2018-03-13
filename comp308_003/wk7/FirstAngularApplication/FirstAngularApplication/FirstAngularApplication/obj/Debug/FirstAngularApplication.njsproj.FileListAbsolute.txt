@@ -1,0 +1,5 @@
+C:\Classes\COMP308\Examples\2017\FirstAngularApplication\FirstAngularApplication\obj\Debug\FirstAngularApplication.njsprojResolveAssemblyReference.cache
+C:\Classes\COMP308\Examples\2017\FirstAngularApplication\FirstAngularApplication\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Classes\COMP308\Examples\2018\Week7\FirstAngularApplication\FirstAngularApplication\obj\Debug\FirstAngularApplication.njsprojResolveAssemblyReference.cache
+C:\Classes\COMP308\Examples\2018\Week7\FirstAngularApplication\FirstAngularApplication\obj\Debug\FirstAngularApplication.njsproj.CoreCompileInputs.cache
+C:\Classes\COMP308\Examples\2018\Week7\FirstAngularApplication\FirstAngularApplication\bin\Microsoft.NodejsTools.WebRole.dll

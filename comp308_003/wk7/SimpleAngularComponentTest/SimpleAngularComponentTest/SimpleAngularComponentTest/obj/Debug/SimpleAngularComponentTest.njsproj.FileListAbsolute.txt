@@ -1,0 +1,8 @@
+C:\Classes\COMP308\Examples\2017\SimpleAngularComponentTest\SimpleAngularComponentTest\obj\Debug\SimpleAngularComponentTest.njsprojResolveAssemblyReference.cache
+C:\Classes\COMP308\Examples\2017\SimpleAngularComponentTest\SimpleAngularComponentTest\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Classes\COMP308\Examples\2018\Week7\SimpleAngularComponentTest\SimpleAngularComponentTest\obj\Debug\SimpleAngularComponentTest.njsprojResolveAssemblyReference.cache
+C:\Classes\COMP308\Examples\2018\Week7\SimpleAngularComponentTest\SimpleAngularComponentTest\obj\Debug\SimpleAngularComponentTest.njsproj.CoreCompileInputs.cache
+C:\Classes\COMP308\Examples\2018\Week7\SimpleAngularComponentTest\SimpleAngularComponentTest\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Classes\COMP308\Examples\2018\Week7\test\SimpleAngularComponentTest\SimpleAngularComponentTest\obj\Debug\SimpleAngularComponentTest.njsprojResolveAssemblyReference.cache
+C:\Classes\COMP308\Examples\2018\Week7\test\SimpleAngularComponentTest\SimpleAngularComponentTest\obj\Debug\SimpleAngularComponentTest.njsproj.CoreCompileInputs.cache
+C:\Classes\COMP308\Examples\2018\Week7\test\SimpleAngularComponentTest\SimpleAngularComponentTest\bin\Microsoft.NodejsTools.WebRole.dll

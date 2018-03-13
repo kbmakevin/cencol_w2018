@@ -1,0 +1,20 @@
+{
+  "name": "kevin-ma_comp308-practice-test1",
+  "version": "0.0.0",
+  "description": "KevinMa_COMP308PracticeTest1",
+  "main": "server.js",
+  "author": {
+    "name": "Kevin Ma",
+    "email": "kma45@my.centennialcollege.ca"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "compression": "^1.7.2",
+    "body-parser": "^1.8.0",
+    "method-override": "^2.2.0",
+    "express-session": "^1.7.6",
+    "ejs": "^1.0.0",
+    "mongoose": "^5.0.0"
+  }
+}
