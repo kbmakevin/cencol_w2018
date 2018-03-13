@@ -329,4 +329,17 @@ e.g. Cencol
     - ppl become emotionally/socially dependent on one another..when project ends they fear they will no longer be able to maintain their relationships
         - disadv. ppl may intentionally delay the proj to stay together
     - adv. specialists, knoweledgeable
+
+---
+
+# Week6
+- week5 was missed because of family day
+## Business Case Template
+- ![Business Case Tempalte](business-case-template.png)
+
+## Project Charter Template
+- ![](project-charter-template.png)
+
+## Task Dependencies
+- ![](task-dependencies.png)
 - 
