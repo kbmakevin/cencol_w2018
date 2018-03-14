@@ -1,0 +1,66 @@
+<% include ../partials/header.ejs %>
+
+    <!-- Content Area -->
+
+    <!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+    <div class="col-md">
+        <a href="/surveys/add" class="btn btn-outline-success">
+            <i class="fa fa-plus"></i> Add a Survey</a>
+        <a href="/" class="btn btn-outline-info">
+            <i class="fa fa-home"></i> Return to Home</a>
+    </div>
+    <br>
+    <% if(surveys.length >0) { %>
+        <table class="table table-bordered table-striped table-hover">
+            <!-- Header Row -->
+            <tr>
+                <th class="text-center">Survey ID</th>
+                <th class="text-center">Game Genre</th>
+                <th class="text-center">Days Played Per Year</th>
+                <th class="text-center">Age</th>
+                <th class="text-center">Update Record</th>
+                <th class="text-center">Delete Record</th>
+            </tr>
+            <!-- Template Row -->
+            <% surveys.forEach(survey=> { %>
+                <tr>
+                    <td class="text-center">
+                        <%= survey.surveyId %>
+                    </td>
+                    <td class="text-center">
+                        <%= survey.gameGenre %>
+                    </td>
+                    <td class="text-center">
+                        <%= survey.daysPerYear %>
+                    </td>
+                    <td class="text-center">
+                        <%= survey.age %>
+                    </td>
+                    <td class="text-center">
+                        <a href="/surveys/<%= survey._id %>" class="btn btn-outline-primary">
+                            <i class="fa fa-pencil-square-o"></i> Edit</a>
+                    </td>
+                    <td class="text-center">
+                        <a href="/surveys/delete/<%= survey._id %>" class="btn btn-outline-danger">
+                            <i class="fa fa-trash"></i> Delete</a>
+
+                    </td>
+                </tr>
+
+                <% }) %>
+
+        </table>
+        <% } else { %>
+            <p>
+                There are currently no records in this survey.
+                <br> Please feel free to add a survey by clicking the button above :) !
+            </p>
+            <% }%>
+
+
+                <!-- </div> -->
+                <!-- </div> -->
+                <!-- </div> -->
+
+                <% include ../partials/footer.ejs %>
