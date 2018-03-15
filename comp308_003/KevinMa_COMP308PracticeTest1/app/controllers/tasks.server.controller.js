@@ -38,3 +38,54 @@ exports.readTasks = function (req, res, next) {
         }
     });
 };
+
+exports.updateTasks = function (req, res, next) {
+
+    // let id = req.body.taskId;
+
+    // // console.log('task id is ' + id);
+
+    // let updatedTask = Task(req.body);
+
+    // Task.update({ taskId: id }, updatedTask, (err) => {
+    //     if (err) {
+    //         console.error(err);
+    //         res.end(err);
+    //     } else {
+    //         // refresh the Game List
+    //         res.redirect('/list_tasks');
+    //     }
+    // });
+
+    Task.findOneAndUpdate({ taskId: req.body.taskId }, req.body, (err) => {
+        if (err) {
+            console.log("Error finding and updating stuff");
+            return next(err);
+        }
+        // req.flash("msg", `Task "${req.body.originalTaskId}" updated successfully!`);
+        res.redirect("/list_tasks");
+    });
+
+    // res.redirect('list_tasks');
+
+    /**
+     *  let id = req.params.id;
+
+  let updatedGame = game({
+    "_id": id,
+    "name": req.body.name,
+    "cost": req.body.cost,
+    "rating": req.body.rating
+  });
+
+  game.update({_id: id}, updatedGame, (err) => {
+    if(err) {
+      console.error(err);
+      res.end(err);
+    } else {
+      // refresh the Game List
+      res.redirect('/games');
+    }
+  });
+     */
+}

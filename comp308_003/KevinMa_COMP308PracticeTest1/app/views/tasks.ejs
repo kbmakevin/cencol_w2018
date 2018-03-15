@@ -9,81 +9,82 @@
 </head>
 
 <body>
-    <form method="post" action="/edit_task">
-        <table align="center">
-            <tr>
-                <td>
-                    <div>
-                        <label>Task ID:</label>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label>Task Name:</label>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label>Task Description:</label>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label>Start Date:</label>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label>End date </label>
-                    </div>
-                </td>
-                <td>
-                    <div>
-                        <label>Owner </label>
-                    </div>
-                </td>
-            </tr>
-            <% tasks.forEach(function(task){ %>
+    <table align="center">
+        <tr>
+            <td>
+                <div>
+                    <label>Task ID:</label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label>Task Name:</label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label>Task Description:</label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label>Start Date:</label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label>End date </label>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label>Owner </label>
+                </div>
+            </td>
+        </tr>
+        <% tasks.forEach(function(task){ %>
+            <form method="post" action="/edit_task">
                 <tr>
                     <td>
                         <div>
-                            <input type="text" name="taskId" value="<%= task.taskId %>" />
+                            <input type="text" name="taskId" value="<%= task.taskId %>" required/>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <input type="text" name="taskName" value="<%= task.taskName %>" />
+                            <input type="text" name="taskName" value="<%= task.taskName %>" required/>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <input type="text" name="taskDescription" value="<%= task.taskDescription %>" />
+                            <input type="text" name="taskDescription" value="<%= task.taskDescription %>" required/>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <input type="text" name="startDate" value="<%= task.startDate %>" />
+                            <input type="text" name="startDate" value="<%= task.startDate %>" required/>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <input type="text" name="endDate" value="<%= task.endDate %>" />
+                            <input type="text" name="endDate" value="<%= task.endDate %>" required/>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <input type="text" name="owner" value="<%= task.owner %>" />
+                            <input type="text" name="owner" value="<%= task.owner %>" required/>
                         </div>
                     </td>
                     <td>
                         <div>
-                            <input type="submit" value="Update Task" style="width: 200px" />
+                            <input type="submit" value="Update Task" formaction="/list_tasks?_method=PUT" style="width: 200px" />
                         </div>
                     </td>
                 </tr>
-                <% })%>
-        </table>
-    </form>
+            </form>
+
+            <% })%>
+    </table>
 
 </body>
 

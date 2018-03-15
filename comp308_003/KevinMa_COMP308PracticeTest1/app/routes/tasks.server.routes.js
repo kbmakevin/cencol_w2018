@@ -15,6 +15,8 @@ module.exports = function (app) {
     // a post request to /tasks will execute createTask method in tasks.server.controller
     app.route('/tasks').post(tasks.createTask);
 
-    app.route('/list_tasks').get(tasks.readTasks);
+    app.route('/list_tasks')
+        .get(tasks.readTasks)
+        .put(tasks.updateTasks)
 
 };
