@@ -342,4 +342,10 @@ e.g. Cencol
 
 ## Task Dependencies
 - ![](task-dependencies.png)
+
+---
+
+# Week8
+- critical path is longest path shortest time a proj can be completed
+- Managing Project Risk
 - 
